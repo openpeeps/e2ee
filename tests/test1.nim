@@ -28,7 +28,6 @@ suite "aead tests":
     let opened = aead.unseal(sealed, bobShared)
     assert opened == msg
 
-
   test "AEAD streaming":
     let key = randomBytes[32]()
     let nonce = randomBytes[24]()
