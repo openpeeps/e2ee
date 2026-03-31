@@ -1,4 +1,8 @@
 switch("path", "$projectDir/../src")
 
-{.passC: "-I/usr/local/include".}
-{.passL: "-L/usr/local/lib -lmonocypher".}
+when defined(linux):
+  {.passC: "-I/usr/local/include".}
+  {.passL: "-L/usr/local/lib -lmonocypher".}
+else:
+  {.passC: "-I/usr/local/include".}
+  {.passL: "-L/usr/local/lib -lmonocypher".}
