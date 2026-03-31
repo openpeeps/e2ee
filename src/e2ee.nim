@@ -28,59 +28,59 @@ import ./e2ee/[password, aead, chacha]
 export password, aead, chacha
 export monocypher, utils
 
-when isMainModule:
-  block ee2eExample:
-    echo " --- E2EE key exchange example"
-    let pwd = "correct horse battery staple"
-    let salt = generateSalt()
+# when isMainModule:
+#   block ee2eExample:
+#     echo " --- E2EE key exchange example"
+#     let pwd = "correct horse battery staple"
+#     let salt = generateSalt()
 
-    # Derive keypairs from password+salt
-    let (aliceSK, alicePK) = keyPairFromPassword(pwd, salt)
-    let (bobSK, bobPK) = keyPairFromPassword(pwd, salt)
+#     # Derive keypairs from password+salt
+#     let (aliceSK, alicePK) = keyPairFromPassword(pwd, salt)
+#     let (bobSK, bobPK) = keyPairFromPassword(pwd, salt)
 
-    # Derive shared secret (both sides should match)
-    let aliceShared = aliceSK.sharedSecret(bobPK)
-    let bobShared = bobSK.sharedSecret(alicePK)
+#     # Derive shared secret (both sides should match)
+#     let aliceShared = aliceSK.sharedSecret(bobPK)
+#     let bobShared = bobSK.sharedSecret(alicePK)
 
-    echo "Shared secret matches: ", (aliceShared == bobShared)
+#     echo "Shared secret matches: ", (aliceShared == bobShared)
 
-    # High-level sealing/unsealing
-    let message = "Hello from Alice via seal/unseal API"
-    let sealed = aead.seal(message, aliceShared)
+#     # High-level sealing/unsealing
+#     let message = "Hello from Alice via seal/unseal API"
+#     let sealed = aead.seal(message, aliceShared)
 
-    echo "Sealed cipher length: ", sealed.cipherText.len
-    let opened = aead.unseal(sealed, bobShared)
+#     echo "Sealed cipher length: ", sealed.cipherText.len
+#     let opened = aead.unseal(sealed, bobShared)
 
-    echo "Opened message: ", opened
+#     echo "Opened message: ", opened
 
-  block e2eeStreamExample:
-    echo " --- AEAD streaming example"
-    let key = randomBytes[32]()
-    let nonce = randomBytes[24]()
+#   block e2eeStreamExample:
+#     echo " --- AEAD streaming example"
+#     let key = randomBytes[32]()
+#     let nonce = randomBytes[24]()
 
-    # Split a message into chunks
-    let message = "Hello, this is a test of AEAD streaming!"
-    let chunk1 = message.toOpenArrayByte(0, 15).toSeq()
-    let chunk2 = message.toOpenArrayByte(16, message.high).toSeq()
+#     # Split a message into chunks
+#     let message = "Hello, this is a test of AEAD streaming!"
+#     let chunk1 = message.toOpenArrayByte(0, 15).toSeq()
+#     let chunk2 = message.toOpenArrayByte(16, message.high).toSeq()
 
-    # Encrypt chunks
-    var stream = aeadStreamInitX(key, nonce)
-    let (cipher1, mac1) = aeadStreamWrite(stream, chunk1)
-    let (cipher2, mac2) = aeadStreamWrite(stream, chunk2)
+#     # Encrypt chunks
+#     var stream = aeadStreamInitX(key, nonce)
+#     let (cipher1, mac1) = aeadStreamWrite(stream, chunk1)
+#     let (cipher2, mac2) = aeadStreamWrite(stream, chunk2)
 
-    # Decrypt chunks
-    var decStream = aeadStreamInitX(key, nonce)
-    let plain1 = aeadStreamRead(decStream, cipher1, mac1)
-    let plain2 = aeadStreamRead(decStream, cipher2, mac2)
+#     # Decrypt chunks
+#     var decStream = aeadStreamInitX(key, nonce)
+#     let plain1 = aeadStreamRead(decStream, cipher1, mac1)
+#     let plain2 = aeadStreamRead(decStream, cipher2, mac2)
 
-    # Combine and print
-    let decrypted = cast[string](plain1 & plain2)
-    echo "Original:  ", message
-    echo "Decrypted: ", decrypted
+#     # Combine and print
+#     let decrypted = cast[string](plain1 & plain2)
+#     echo "Original:  ", message
+#     echo "Decrypted: ", decrypted
 
-  block chachaExample:
-    echo " --- XChaCha20 example"
-    let salt = generateSalt()
-    let msg = chacha.sealWithPassword("Secret", "password123", salt)
-    let opened = chacha.unsealWithPassword(msg, "password123", salt)
-    echo opened # "Secret"
+#   block chachaExample:
+#     echo " --- XChaCha20 example"
+#     let salt = generateSalt()
+#     let msg = chacha.sealWithPassword("Secret", "password123", salt)
+#     let opened = chacha.unsealWithPassword(msg, "password123", salt)
+#     echo opened # "Secret"
