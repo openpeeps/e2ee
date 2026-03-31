@@ -22,7 +22,8 @@
 
 ## Examples
 
-Password hashing and verification using Argon2id:
+## Password hashing and verification
+Use the Argon2id algorithm to hash passwords and verify them securely:
 ```nim
 import e2ee/password
 
@@ -30,7 +31,7 @@ let hashedPwd = hashPassword("securepassword123")
 assert verifyPassword("securepassword123", hashedPwd) == true
 ```
 
-## AEAD encryption and decryption:
+## AEAD encryption and decryption
 Use AEAD for sealing and unsealing messages with a shared secret derived from passwords. This example demonstrates how two parties can independently derive the same shared secret from their passwords and use it for secure communication:
 ```nim
 import e2ee/aead
@@ -60,7 +61,55 @@ let opened = aead.unseal(sealed, bobShared)
 assert opened == msg
 ```
 
-_todo more examples/tests_
+### AEAD streaming encryption and decryption
+For encrypting large data streams, you can use the streaming API, here
+is an example of how to encrypt and decrypt a message in chunks:
+```nim
+import e2ee/aead
+let key = randomBytes[32]()
+let nonce = randomBytes[24]()
+
+# Split a message into chunks
+let message = "Hello, this is a test of AEAD streaming!"
+let chunk1 = message.toOpenArrayByte(0, 15).toSeq()
+let chunk2 = message.toOpenArrayByte(16, message.high).toSeq()
+
+# Encrypt chunks
+var stream = aeadStreamInitX(key, nonce)
+let (cipher1, mac1) = aeadStreamWrite(stream, chunk1)
+let (cipher2, mac2) = aeadStreamWrite(stream, chunk2)
+
+assert cipher1.len == chunk1.len
+assert cipher2.len == chunk2.len
+
+assert mac1.len == 16
+assert mac2.len == 16
+
+# Decrypt chunks
+var decStream = aeadStreamInitX(key, nonce)
+let plain1 = aeadStreamRead(decStream, cipher1, mac1)
+let plain2 = aeadStreamRead(decStream, cipher2, mac2)
+
+assert plain1 == chunk1
+assert plain2 == chunk2
+
+# Combine and print
+let decrypted = cast[string](plain1 & plain2)
+assert decrypted == message
+```
+
+### ChaCha sealing and opening
+Simple sealing and opening of messages using ChaCha20:
+```nim
+let salt = generateSalt()
+let password = "password123"
+let msg = "This is a secret message."
+
+let sealed = chacha.sealWithPassword(msg, password, salt)
+let opened = chacha.unsealWithPassword(sealed, password, salt)
+
+assert opened == msg
+```
 
 ### ❤ Contributions & Support
 - 🐛 Found a bug? [Create a new Issue](https://github.com/openpeeps/e2ee/issues)
