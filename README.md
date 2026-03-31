@@ -1,7 +1,7 @@
 <p align="center">
   🔐 A simple cryptography package based on Monocypher library.<br>
-  Supporting E2EE, Hashing, Key Derivation/Exchange, Seal/Unseal<br>
-  👑 Written in Nim language
+  Supporting E2EE Streams &bullet; Password Hashing/Validation &bullet; Key Derivation/Exchange &bullet; Seal/Unseal<br>
+  👑 Written in Nim language | Powered by 🔐 Monocypher
 </p>
 
 <p align="center">
