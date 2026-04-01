@@ -23,7 +23,7 @@
 import std/[sequtils, strutils]
 
 import ./e2ee/private/[monocypher, utils]
-import ./e2ee/[password, aead, chacha]
+import ./e2ee/[password, aead, chacha, blake2b, signs]
 
-export password, aead, chacha
+export password, aead, chacha, blake2b, signs
 export monocypher, utils

@@ -6,3 +6,5 @@ when defined(linux):
 else:
   {.passC: "-I/usr/local/include".}
   {.passL: "-L/usr/local/lib -lmonocypher".}
+
+--define:e2eeFastTests

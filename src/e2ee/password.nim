@@ -26,17 +26,28 @@ const
   HashLen = 32
   SaltLen = 16
 
+when defined(e2eeFastTests):
+  const
+    Argon2Blocks = 32'u32   # fast test mode
+    Argon2Passes = 1'u32
+else:
+  const
+    Argon2Blocks = 1024'u32 # production defaults
+    Argon2Passes = 3'u32
+
+proc argon2Config(): crypto_argon2_config {.inline.} =
+  result.algorithm = CRYPTO_ARGON2_ID
+  result.nb_blocks = Argon2Blocks
+  result.nb_passes = Argon2Passes
+  result.nb_lanes = 1
+
 proc hashPassword*(password: string): string =
   ## Hash a password for storage using Argon2id.
   ## Returns a hex string of the form "hex(salt):hex(hash)"
   let salt = generateSalt(SaltLen)
   var hash: array[HashLen, uint8]
-  var workArea: array[1024 * 8, uint8]
-  var config: crypto_argon2_config
-  config.algorithm = CRYPTO_ARGON2_ID
-  config.nb_blocks = 1024
-  config.nb_passes = 3
-  config.nb_lanes = 1
+  var workArea: array[Argon2Blocks.int * 1024, uint8]
+  let config = argon2Config()
   var inputs: crypto_argon2_inputs
   inputs.pass = cast[ptr uint8](password.cstring)
   inputs.salt = cast[ptr uint8](unsafeAddr salt[0])
@@ -50,7 +61,6 @@ proc hashPassword*(password: string): string =
     inputs,
     crypto_argon2_no_extras
   )
-  # Store as hex(salt) + ":" + hex(hash)
   result = salt.toHex() & ":" & hash.toHex()
 
 proc verifyPassword*(password, stored: string): bool =
@@ -62,12 +72,8 @@ proc verifyPassword*(password, stored: string): bool =
   let salt = fromHex[SaltLen, uint8](parts[0])
   let expected = fromHex[HashLen, uint8](parts[1])
   var hash: array[HashLen, uint8]
-  var workArea: array[1024 * 8, uint8]
-  var config: crypto_argon2_config
-  config.algorithm = CRYPTO_ARGON2_ID
-  config.nb_blocks = 1024
-  config.nb_passes = 3
-  config.nb_lanes = 1
+  var workArea: array[Argon2Blocks.int * 1024, uint8]
+  let config = argon2Config()
   var inputs: crypto_argon2_inputs
   inputs.pass = cast[ptr uint8](password.cstring)
   inputs.salt = cast[ptr uint8](unsafeAddr salt[0])
