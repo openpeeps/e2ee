@@ -7,9 +7,6 @@
 
 import std/strutils
 
-import ./private/[monocypher, utils]
-import ./password
-
 ## This module implements a high-level API for the BLAKE2b hash funcionality provided by th
 ## Monocypher library. It includes functions for computing BLAKE2b hashes, keyed hashes (MACs),
 ## and incremental hashing with a stateful Blake2b object.
@@ -17,6 +14,9 @@ import ./password
 ## The API is designed to be easy to use while still providing access to the full functionality
 ## of the underlying library. It also includes utility functions for converting digests to hex
 ## strings and verifying digests in constant time
+
+import ./private/[monocypher, utils]
+import ./password
 
 const
   Blake2bMinDigestSize* = 1
@@ -39,14 +39,6 @@ proc ensureHashSize(hashSize: int) {.inline.} =
 proc ensureKeySize(keySize: int) {.inline.} =
   if keySize < 1 or keySize > Blake2bMaxKeySize:
     raise newException(ValueError, "BLAKE2b key size must be in 1..64 bytes")
-
-proc toPtr(data: openArray[byte]): ptr uint8 {.inline.} =
-  if data.len == 0: nil
-  else: cast[ptr uint8](unsafeAddr data[0])
-
-proc strPtr(s: string): ptr uint8 {.inline.} =
-  if s.len == 0: nil
-  else: cast[ptr uint8](unsafeAddr s[0])
 
 proc toHexDigest*(digest: openArray[byte]): string =
   ## Convert a binary digest to a hex string. Each byte is represented by two hex characters.

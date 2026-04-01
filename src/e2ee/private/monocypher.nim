@@ -72,15 +72,26 @@ proc crypto_verify64*(a: ptr uint8, b: ptr uint8): cint
 proc crypto_wipe*(secret: pointer, size: csize_t)
 
 # Authenticated encryption
-proc crypto_aead_lock*(cipher_text: ptr uint8, mac: array[16, uint8], key: array[32, uint8], nonce: array[24, uint8], ad: ptr uint8, ad_size: csize_t, plain_text: ptr uint8, text_size: csize_t)
-proc crypto_aead_unlock*(plain_text: ptr uint8, mac: array[16, uint8], key: array[32, uint8], nonce: array[24, uint8], ad: ptr uint8, ad_size: csize_t, cipher_text: ptr uint8, text_size: csize_t): cint
+proc crypto_aead_lock*(
+  cipher_text: ptr uint8, mac: ptr uint8, key: ptr uint8, nonce: ptr uint8,
+  ad: ptr uint8, ad_size: csize_t, plain_text: ptr uint8, text_size: csize_t)
+
+proc crypto_aead_unlock*(
+  plain_text: ptr uint8, mac: ptr uint8, key: ptr uint8, nonce: ptr uint8,
+  ad: ptr uint8, ad_size: csize_t, cipher_text: ptr uint8, text_size: csize_t): cint
 
 # Authenticated stream
-proc crypto_aead_init_x*(ctx: ptr crypto_aead_ctx, key: array[32, uint8], nonce: array[24, uint8])
-proc crypto_aead_init_djb*(ctx: ptr crypto_aead_ctx, key: array[32, uint8], nonce: array[8, uint8])
-proc crypto_aead_init_ietf*(ctx: ptr crypto_aead_ctx, key: array[32, uint8], nonce: array[12, uint8])
-proc crypto_aead_write*(ctx: ptr crypto_aead_ctx, cipher_text: ptr uint8, mac: array[16, uint8], ad: ptr uint8, ad_size: csize_t, plain_text: ptr uint8, text_size: csize_t)
-proc crypto_aead_read*(ctx: ptr crypto_aead_ctx, plain_text: ptr uint8, mac: array[16, uint8], ad: ptr uint8, ad_size: csize_t, cipher_text: ptr uint8, text_size: csize_t): cint
+proc crypto_aead_init_x*(ctx: ptr crypto_aead_ctx, key: ptr uint8, nonce: ptr uint8)
+proc crypto_aead_init_djb*(ctx: ptr crypto_aead_ctx, key: ptr uint8, nonce: ptr uint8)
+proc crypto_aead_init_ietf*(ctx: ptr crypto_aead_ctx, key: ptr uint8, nonce: ptr uint8)
+proc crypto_aead_write*(
+  ctx: ptr crypto_aead_ctx, cipher_text: ptr uint8, mac: ptr uint8,
+  ad: ptr uint8, ad_size: csize_t, plain_text: ptr uint8, text_size: csize_t
+)
+proc crypto_aead_read*(
+  ctx: ptr crypto_aead_ctx, plain_text: ptr uint8, mac: ptr uint8,
+  ad: ptr uint8, ad_size: csize_t, cipher_text: ptr uint8, text_size: csize_t
+): cint
 
 # General purpose hash (BLAKE2b)
 proc crypto_blake2b*(hash: ptr uint8, hash_size: csize_t, message: ptr uint8, message_size: csize_t)
@@ -95,29 +106,38 @@ var crypto_argon2_no_extras*: crypto_argon2_extras
 proc crypto_argon2*(hash: ptr uint8, hash_size: uint32, work_area: pointer, config: crypto_argon2_config, inputs: crypto_argon2_inputs, extras: crypto_argon2_extras)
 
 # Key exchange (X-25519)
-proc crypto_x25519_public_key*(public_key: array[32, uint8], secret_key: array[32, uint8])
-proc crypto_x25519*(raw_shared_secret: array[32, uint8], your_secret_key: array[32, uint8], their_public_key: array[32, uint8])
-proc crypto_x25519_to_eddsa*(eddsa: array[32, uint8], x25519: array[32, uint8])
-proc crypto_x25519_inverse*(blind_salt: array[32, uint8], private_key: array[32, uint8], curve_point: array[32, uint8])
-proc crypto_x25519_dirty_small*(pk: array[32, uint8], sk: array[32, uint8])
-proc crypto_x25519_dirty_fast*(pk: array[32, uint8], sk: array[32, uint8])
+proc crypto_x25519_public_key*(public_key: ptr uint8, secret_key: ptr uint8)
+proc crypto_x25519*(raw_shared_secret: ptr uint8, your_secret_key: ptr uint8, their_public_key: ptr uint8)
+proc crypto_x25519_to_eddsa*(eddsa: ptr uint8, x25519: ptr uint8)
+proc crypto_x25519_inverse*(blind_salt: ptr uint8, private_key: ptr uint8, curve_point: ptr uint8)
+proc crypto_x25519_dirty_small*(pk: ptr uint8, sk: ptr uint8)
+proc crypto_x25519_dirty_fast*(pk: ptr uint8, sk: ptr uint8)
 
 # Signatures
-proc crypto_eddsa_key_pair*(secret_key: array[64, uint8], public_key: array[32, uint8], seed: array[32, uint8])
-proc crypto_eddsa_sign*(signature: array[64, uint8], secret_key: array[64, uint8], message: ptr uint8, message_size: csize_t)
-proc crypto_eddsa_check*(signature: array[64, uint8], public_key: array[32, uint8], message: ptr uint8, message_size: csize_t): cint
-proc crypto_eddsa_to_x25519*(x25519: array[32, uint8], eddsa: array[32, uint8])
-proc crypto_eddsa_trim_scalar*(`out`: array[32, uint8], `in`: array[32, uint8])
-proc crypto_eddsa_reduce*(reduced: array[32, uint8], expanded: array[64, uint8])
-proc crypto_eddsa_mul_add*(r: array[32, uint8], a: array[32, uint8], b: array[32, uint8], c: array[32, uint8])
-proc crypto_eddsa_scalarbase*(point: array[32, uint8], scalar: array[32, uint8])
-proc crypto_eddsa_check_equation*(signature: array[64, uint8], public_key: array[32, uint8], h_ram: array[32, uint8]): cint
+proc crypto_eddsa_key_pair*(secret_key: ptr uint8, public_key: ptr uint8, seed: ptr uint8)
+proc crypto_eddsa_sign*(signature: ptr uint8, secret_key: ptr uint8, message: ptr uint8, message_size: csize_t)
+proc crypto_eddsa_check*(signature: ptr uint8, public_key: ptr uint8, message: ptr uint8, message_size: csize_t): cint
+proc crypto_eddsa_to_x25519*(x25519: ptr uint8, eddsa: ptr uint8)
+proc crypto_eddsa_trim_scalar*(`out`: ptr uint8, `in`: ptr uint8)
+proc crypto_eddsa_reduce*(reduced: ptr uint8, expanded: ptr uint8)
+proc crypto_eddsa_mul_add*(r: ptr uint8, a: ptr uint8, b: ptr uint8, c: ptr uint8)
+proc crypto_eddsa_scalarbase*(point: ptr uint8, scalar: ptr uint8)
+proc crypto_eddsa_check_equation*(signature: ptr uint8, public_key: ptr uint8, h_ram: ptr uint8): cint
 
 # Chacha20
-proc crypto_chacha20_h*(`out`: array[32, uint8], key: array[32, uint8], `in`: array[16, uint8])
-proc crypto_chacha20_djb*(cipher_text: ptr uint8, plain_text: ptr uint8, text_size: csize_t, key: array[32, uint8], nonce: array[8, uint8], ctr: uint64): uint64
-proc crypto_chacha20_ietf*(cipher_text: ptr uint8, plain_text: ptr uint8, text_size: csize_t, key: array[32, uint8], nonce: array[12, uint8], ctr: uint32): uint32
-proc crypto_chacha20_x*(cipher_text: ptr uint8, plain_text: ptr uint8, text_size: csize_t, key: array[32, uint8], nonce: array[24, uint8], ctr: uint64): uint64
+proc crypto_chacha20_h*(`out`: ptr uint8, key: ptr uint8, `in`: ptr uint8)
+proc crypto_chacha20_djb*(
+  cipher_text: ptr uint8, plain_text: ptr uint8, text_size: csize_t,
+  key: ptr uint8, nonce: ptr uint8, ctr: uint64
+): uint64
+proc crypto_chacha20_ietf*(
+  cipher_text: ptr uint8, plain_text: ptr uint8, text_size: csize_t,
+  key: ptr uint8, nonce: ptr uint8, ctr: uint32
+): uint32
+proc crypto_chacha20_x*(
+  cipher_text: ptr uint8, plain_text: ptr uint8, text_size: csize_t,
+  key: ptr uint8, nonce: ptr uint8, ctr: uint64
+): uint64
 
 # Poly1305
 proc crypto_poly1305*(mac: array[16, uint8], message: ptr uint8, message_size: csize_t, key: array[32, uint8])

@@ -39,6 +39,14 @@ proc fromHex*[N: static int, T](s: string): array[N, T] =
     let b = a + 1
     result[i] = T(parseHexInt(s[a..b]))
 
+proc toPtr*(data: openArray[byte]): ptr uint8 {.inline.} =
+  if data.len == 0: nil
+  else: cast[ptr uint8](unsafeAddr data[0])
+
+proc strPtr*(s: string): ptr uint8 {.inline.} =
+  if s.len == 0: nil
+  else: cast[ptr uint8](unsafeAddr s[0])
+
 proc randomBytes*[N: static int]: array[N, uint8] =
   ## Generate N random bytes using urandom. Returns an array of uint8.
   let bytes = urandom(N)

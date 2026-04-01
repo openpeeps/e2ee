@@ -26,40 +26,56 @@ type
       ## seed followed by the 32-byte public key
 
 proc generateSigningKeyPair*(seed: Seed32): SigningKeyPair =
-  ## Deterministic keypair from a 32-byte seed.
-  crypto_eddsa_key_pair(result.secretKey, result.publicKey, seed)
+  var sk: SecretKey
+  var pk: PublicKey
+  var s = seed
+  crypto_eddsa_key_pair(
+    cast[ptr uint8](addr sk[0]),
+    cast[ptr uint8](addr pk[0]),
+    cast[ptr uint8](addr s[0])
+  )
+  result.secretKey = sk
+  result.publicKey = pk
 
 proc generateSigningKeyPair*(): SigningKeyPair =
-  ## Random keypair generated from a random 32-byte seed
   let seed = randomBytes[32]()
   result = generateSigningKeyPair(seed)
 
 proc sign*(secretKey: SecretKey, message: openArray[uint8]): Signature =
-  ## Create detached EdDSA signature.
-  let msgPtr =
-    if message.len == 0: nil
-    else: cast[ptr uint8](unsafeAddr message[0])
-  crypto_eddsa_sign(result, secretKey, msgPtr, csize_t(message.len))
+  let msgPtr = if message.len == 0: nil else: cast[ptr uint8](unsafeAddr message[0])
+  crypto_eddsa_sign(
+    cast[ptr uint8](addr result[0]),
+    cast[ptr uint8](unsafeAddr secretKey[0]),
+    msgPtr,
+    csize_t(message.len)
+  )
 
 proc sign*(secretKey: SecretKey, message: string): Signature =
-  let msgPtr =
-    if message.len == 0: nil
-    else: cast[ptr uint8](unsafeAddr message[0])
-  crypto_eddsa_sign(result, secretKey, msgPtr, csize_t(message.len))
+  let msgPtr = if message.len == 0: nil else: cast[ptr uint8](unsafeAddr message[0])
+  crypto_eddsa_sign(
+    cast[ptr uint8](addr result[0]),
+    cast[ptr uint8](unsafeAddr secretKey[0]),
+    msgPtr,
+    csize_t(message.len)
+  )
 
 proc verify*(publicKey: PublicKey, message: openArray[uint8], signature: Signature): bool =
-  ## Verify detached EdDSA signature
-  let msgPtr =
-    if message.len == 0: nil
-    else: cast[ptr uint8](unsafeAddr message[0])
-  result = crypto_eddsa_check(signature, publicKey, msgPtr, csize_t(message.len)) == 0
+  let msgPtr = if message.len == 0: nil else: cast[ptr uint8](unsafeAddr message[0])
+  result = crypto_eddsa_check(
+    cast[ptr uint8](unsafeAddr signature[0]),
+    cast[ptr uint8](unsafeAddr publicKey[0]),
+    msgPtr,
+    csize_t(message.len)
+  ) == 0
 
 proc verify*(publicKey: PublicKey, message: string, signature: Signature): bool =
-  ## Verify detached EdDSA signature
-  let msgPtr =
-    if message.len == 0: nil
-    else: cast[ptr uint8](unsafeAddr message[0])
-  result = crypto_eddsa_check(signature, publicKey, msgPtr, csize_t(message.len)) == 0
+  let msgPtr = if message.len == 0: nil else: cast[ptr uint8](unsafeAddr message[0])
+  result = crypto_eddsa_check(
+    cast[ptr uint8](unsafeAddr signature[0]),
+    cast[ptr uint8](unsafeAddr publicKey[0]),
+    msgPtr,
+    csize_t(message.len)
+  ) == 0
 
 # Convenience functions for hex encoding/decoding of keys and signatures
 proc publicKeyToHex*(k: PublicKey): string = k.toHex()

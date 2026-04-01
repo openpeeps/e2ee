@@ -25,33 +25,28 @@ type
 proc encrypt*(plainText: string, key: Key32, nonce: Nonce24): seq[uint8] =
   ## Encrypts the plainText using XChaCha20 with the given key and nonce.
   let plainBytes = cast[seq[uint8]](plainText)
-  var cipherText = newSeq[uint8](plainBytes.len)
-  if plainBytes.len == 0:
-    return cipherText # empty string case
+  result = newSeq[uint8](plainBytes.len)
   discard crypto_chacha20_x(
-    cipherText[0].addr,
-    plainBytes[0].addr,
+    toPtr(result),
+    toPtr(plainBytes),
     csize_t(plainBytes.len),
-    key,
-    nonce,
+    cast[ptr uint8](unsafeAddr key[0]),
+    cast[ptr uint8](unsafeAddr nonce[0]),
     0'u64
   )
-  cipherText
 
 proc decrypt*(cipherText: seq[uint8], key: Key32, nonce: Nonce24): string =
   ## Decrypts the cipherText using XChaCha20 with the given key and nonce.
   var plainBytes = newSeq[uint8](cipherText.len)
-  if cipherText.len == 0:
-    return # empty string
   discard crypto_chacha20_x(
-    plainBytes[0].addr,
-    cipherText[0].addr,
+    toPtr(plainBytes),
+    toPtr(cipherText),
     csize_t(cipherText.len),
-    key,
-    nonce,
+    cast[ptr uint8](unsafeAddr key[0]),
+    cast[ptr uint8](unsafeAddr nonce[0]),
     0'u64
   )
-  cast[string](plainBytes)
+  result = cast[string](plainBytes)
 
 proc seal*(plainText: string, key: Key32): ChachaMessage =
   ## Encrypts the plainText with a random nonce, returns ChachaMessage.
