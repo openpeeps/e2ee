@@ -1,6 +1,7 @@
 <p align="center">
   🔐 A simple cryptography package based on Monocypher library.<br>
-  Supporting E2EE Streams &bullet; Password Hashing/Validation &bullet; Key Derivation/Exchange &bullet; Seal/Unseal<br>
+  Supporting E2EE Streams &bullet; Password Hashing/Validation Argon2id&bullet;<br>
+  Key Derivation/Exchange &bullet; Seal/Unseal<br>
   👑 Written in Nim language | Powered by 🔐 Monocypher
 </p>
 
@@ -18,11 +19,20 @@
 - 🔐 End-to-End Encryption (E2EE) for secure communication
 - Key Derivation and Exchange for secure key management
 - Seal and Unseal functions for data protection
+- Password Hashing and Validation using Argon2id
+- Hash functions including BLAKE2b for data integrity and authentication
 - Low-level and high-level cryptographic operations for flexibility
 
 ## Examples
 
-## Password hashing and verification
+## Password generation, hashing and verification
+Generate a random password using a master password and a salt:
+```
+import e2ee/password
+let pwd = generatePassword("masterpassword", generateSalt())
+echo "Generated password: ", pwd
+```
+
 Use the Argon2id algorithm to hash passwords and verify them securely:
 ```nim
 import e2ee/password
@@ -110,6 +120,17 @@ let opened = chacha.unsealWithPassword(sealed, password, salt)
 
 assert opened == msg
 ```
+
+### BLAKE2b hashing
+Compute a BLAKE2b hash of a message. For more examples and test vectors, see the [test suite](https://github.com/openpeeps/e2ee/blob/main/tests/test1.nim):
+```nim
+import e2ee/blake2b
+let msg = "Hello, world!"
+echo "BLAKE2b digest: ", blakeHex(msg)
+```
+
+
+Check the tests for more runnable examples of the high-level API, including keyed hashing, incremental hashing, and password hashing 👉 [tests/*.nim](https://github.com/openpeeps/e2ee/blob/main/tests/test1.nim)
 
 ### ❤ Contributions & Support
 - 🐛 Found a bug? [Create a new Issue](https://github.com/openpeeps/e2ee/issues)
