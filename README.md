@@ -15,8 +15,8 @@
 </p>
 
 ## 😍 Key Features
-- Powered by the Monocypher library
-- 🔐 End-to-End Encryption (E2EE) for secure communication
+- 🔐 Powered by the [Monocypher library](https://monocypher.org/)
+- End-to-End Encryption (E2EE) for secure communication
 - Key Derivation and Exchange for secure key management
 - Seal and Unseal functions for data protection
 - Password Hashing and Validation using Argon2id
