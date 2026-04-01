@@ -1,0 +1,31 @@
+nimTitle	blake2b	e2ee/blake2b.html	module e2ee/blake2b		0
+nim	Blake2bMinDigestSize	e2ee/blake2b.html#Blake2bMinDigestSize	const Blake2bMinDigestSize		22
+nim	Blake2bMaxDigestSize	e2ee/blake2b.html#Blake2bMaxDigestSize	const Blake2bMaxDigestSize		23
+nim	Blake2bDefaultDigestSize	e2ee/blake2b.html#Blake2bDefaultDigestSize	const Blake2bDefaultDigestSize		24
+nim	Blake2bMaxKeySize	e2ee/blake2b.html#Blake2bMaxKeySize	const Blake2bMaxKeySize		25
+nim	Blake2b	e2ee/blake2b.html#Blake2b	object Blake2b		28
+nim	toHexDigest	e2ee/blake2b.html#toHexDigest,openArray[byte]	proc toHexDigest(digest: openArray[byte]): string		43
+nim	blake	e2ee/blake2b.html#blake,openArray[byte],int	proc blake(message: openArray[byte]; hashSize: int = Blake2bDefaultDigestSize): seq[\n    byte]		49
+nim	blake	e2ee/blake2b.html#blake,string,int	proc blake(message: string; hashSize: int = Blake2bDefaultDigestSize): seq[byte]		61
+nim	blakeHex	e2ee/blake2b.html#blakeHex,openArray[byte],int	proc blakeHex(message: openArray[byte]; hashSize: int = Blake2bDefaultDigestSize): string		73
+nim	blakeHex	e2ee/blake2b.html#blakeHex,string,int	proc blakeHex(message: string; hashSize: int = Blake2bDefaultDigestSize): string		78
+nim	blakeKeyed	e2ee/blake2b.html#blakeKeyed,openArray[byte],openArray[byte],int	proc blakeKeyed(message: openArray[byte]; key: openArray[byte];\n           hashSize: int = Blake2bDefaultDigestSize): seq[byte]		83
+nim	blakeKeyed	e2ee/blake2b.html#blakeKeyed,string,string,int	proc blakeKeyed(message, key: string; hashSize: int = Blake2bDefaultDigestSize): seq[\n    byte]		99
+nim	blakeKeyedHex	e2ee/blake2b.html#blakeKeyedHex,openArray[byte],openArray[byte],int	proc blakeKeyedHex(message: openArray[byte]; key: openArray[byte];\n              hashSize: int = Blake2bDefaultDigestSize): string		113
+nim	blakeKeyedHex	e2ee/blake2b.html#blakeKeyedHex,string,string,int	proc blakeKeyedHex(message, key: string; hashSize: int = Blake2bDefaultDigestSize): string		118
+nim	initBlake2b	e2ee/blake2b.html#initBlake2b,int	proc initBlake2b(hashSize: int = Blake2bDefaultDigestSize): Blake2b		123
+nim	initBlake2bKeyed	e2ee/blake2b.html#initBlake2bKeyed,openArray[byte],int	proc initBlake2bKeyed(key: openArray[byte]; hashSize: int = Blake2bDefaultDigestSize): Blake2b		131
+nim	initBlake2bKeyed	e2ee/blake2b.html#initBlake2bKeyed,string,int	proc initBlake2bKeyed(key: string; hashSize: int = Blake2bDefaultDigestSize): Blake2b		140
+nim	update	e2ee/blake2b.html#update,Blake2b,openArray[byte]	proc update(state: var Blake2b; chunk: openArray[byte])		150
+nim	update	e2ee/blake2b.html#update,Blake2b,string	proc update(state: var Blake2b; chunk: string)		156
+nim	finish	e2ee/blake2b.html#finish,Blake2b	proc finish(state: var Blake2b): seq[byte]		163
+nim	finishHex	e2ee/blake2b.html#finishHex,Blake2b	proc finishHex(state: var Blake2b): string		171
+nim	verifyDigest	e2ee/blake2b.html#verifyDigest,openArray[byte],openArray[byte]	proc verifyDigest(a, b: openArray[byte]): bool		176
+nim	verifyDigest	e2ee/blake2b.html#verifyDigest,string,string	proc verifyDigest(a, b: string): bool		184
+nimgrp	blake	e2ee/blake2b.html#blake-procs-all	proc		49
+nimgrp	blakekeyed	e2ee/blake2b.html#blakeKeyed-procs-all	proc		83
+nimgrp	blakehex	e2ee/blake2b.html#blakeHex-procs-all	proc		73
+nimgrp	blakekeyedhex	e2ee/blake2b.html#blakeKeyedHex-procs-all	proc		113
+nimgrp	update	e2ee/blake2b.html#update-procs-all	proc		150
+nimgrp	initblake2bkeyed	e2ee/blake2b.html#initBlake2bKeyed-procs-all	proc		131
+nimgrp	verifydigest	e2ee/blake2b.html#verifyDigest-procs-all	proc		176

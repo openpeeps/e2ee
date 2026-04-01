@@ -1,0 +1,8 @@
+nimTitle	chacha	e2ee/chacha.html	module e2ee/chacha		0
+nim	ChachaMessage	e2ee/chacha.html#ChachaMessage	object ChachaMessage		17
+nim	encrypt	e2ee/chacha.html#encrypt,string,Key32,Nonce24	proc encrypt(plainText: string; key: Key32; nonce: Nonce24): seq[uint8]		25
+nim	decrypt	e2ee/chacha.html#decrypt,seq[uint8],Key32,Nonce24	proc decrypt(cipherText: seq[uint8]; key: Key32; nonce: Nonce24): string		38
+nim	seal	e2ee/chacha.html#seal,string,Key32	proc seal(plainText: string; key: Key32): ChachaMessage		51
+nim	sealWithPassword	e2ee/chacha.html#sealWithPassword,string,string,RandomBytes	proc sealWithPassword(plainText, password: string; salt: RandomBytes): ChachaMessage		57
+nim	unseal	e2ee/chacha.html#unseal,ChachaMessage,Key32	proc unseal(msg: ChachaMessage; key: Key32): string		62
+nim	unsealWithPassword	e2ee/chacha.html#unsealWithPassword,ChachaMessage,string,RandomBytes	proc unsealWithPassword(msg: ChachaMessage; password: string; salt: RandomBytes): string		66

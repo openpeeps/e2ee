@@ -1,0 +1,11 @@
+nimTitle	utils	e2ee/private/utils.html	module e2ee/private/utils		0
+nim	RandomBytes	e2ee/private/utils.html#RandomBytes	type RandomBytes		17
+nim	Key32	e2ee/private/utils.html#Key32	type Key32		18
+nim	Nonce24	e2ee/private/utils.html#Nonce24	type Nonce24		19
+nim	Mac16	e2ee/private/utils.html#Mac16	type Mac16		20
+nim	toHex	e2ee/private/utils.html#toHex,T	proc toHex[T](v: T): string		22
+nim	fromHex	e2ee/private/utils.html#fromHex,string	proc fromHex[N: static int; T](s: string): array[N, T]		31
+nim	toPtr	e2ee/private/utils.html#toPtr,openArray[byte]	proc toPtr(data: openArray[byte]): ptr uint8		42
+nim	strPtr	e2ee/private/utils.html#strPtr,string	proc strPtr(s: string): ptr uint8		46
+nim	randomBytes	e2ee/private/utils.html#randomBytes_2	proc randomBytes[N: static int](): array[N, uint8]		50
+nim	generateSalt	e2ee/private/utils.html#generateSalt,staticint	proc generateSalt(len: static int = 16): RandomBytes		58

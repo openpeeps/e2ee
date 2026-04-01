@@ -1,0 +1,24 @@
+nimTitle	aead	e2ee/aead.html	module e2ee/aead		0
+nim	SealedMessage	e2ee/aead.html#SealedMessage	object SealedMessage		18
+nim	encrypt	e2ee/aead.html#encrypt,string,array[,uint8],array[,uint8]	proc encrypt(text: string; key: array[32, uint8]; nonce: array[24, uint8]): (\n    seq[uint8], RandomBytes)		24
+nim	encrypt	e2ee/aead.html#encrypt,string,string,string	proc encrypt(text: string; key: string; nonce: string): (seq[uint8], RandomBytes)		49
+nim	decrypt	e2ee/aead.html#decrypt,seq[uint8],RandomBytes,array[,uint8],array[,uint8]	proc decrypt(cipherText: seq[uint8]; mac: RandomBytes; key: array[32, uint8];\n        nonce: array[24, uint8]): string		64
+nim	x25519KeyPair	e2ee/aead.html#x25519KeyPair,Key32	proc x25519KeyPair(secret: Key32): (Key32, Key32)		92
+nim	sharedSecret	e2ee/aead.html#sharedSecret,Key32,Key32	proc sharedSecret(mySecret: Key32; theirPublic: Key32): Key32		101
+nim	keyPairFromPassword	e2ee/aead.html#keyPairFromPassword,string,RandomBytes	proc keyPairFromPassword(password: string; salt: RandomBytes): (Key32, Key32)		111
+nim	seal	e2ee/aead.html#seal,string,Key32	proc seal(plainText: string; key: Key32): SealedMessage		116
+nim	unseal	e2ee/aead.html#unseal,SealedMessage,Key32	proc unseal(msg: SealedMessage; key: Key32): string		122
+nim	computeChallengeMac	e2ee/aead.html#computeChallengeMac,Key32,Mac16	proc computeChallengeMac(secret: Key32; challenge: Mac16): Mac16		126
+nim	verifyChallengeMac	e2ee/aead.html#verifyChallengeMac,Key32,Mac16,Mac16	proc verifyChallengeMac(secret: Key32; challenge: Mac16; received: Mac16): bool		140
+nim	aeadX	e2ee/aead.html#aeadX	AeadStreamMode.aeadX		147
+nim	aeadDjb	e2ee/aead.html#aeadDjb	AeadStreamMode.aeadDjb		147
+nim	aeadIetf	e2ee/aead.html#aeadIetf	AeadStreamMode.aeadIetf		147
+nim	AeadStreamMode	e2ee/aead.html#AeadStreamMode	enum AeadStreamMode		147
+nim	AeadStream	e2ee/aead.html#AeadStream	object AeadStream		152
+nim	aeadStreamInit	e2ee/aead.html#aeadStreamInit,AeadStreamMode,Key32,openArray[uint8]	proc aeadStreamInit(mode: AeadStreamMode; key: Key32; nonce: openArray[uint8]): AeadStream		159
+nim	aeadStreamWrite	e2ee/aead.html#aeadStreamWrite,AeadStream,openArray[uint8],openArray[uint8]	proc aeadStreamWrite(stream: var AeadStream; plainText: openArray[uint8];\n                ad: openArray[uint8] = []): (seq[uint8], Mac16)		173
+nim	aeadStreamRead	e2ee/aead.html#aeadStreamRead,AeadStream,openArray[uint8],Mac16,openArray[uint8]	proc aeadStreamRead(stream: var AeadStream; cipherText: openArray[uint8]; mac: Mac16;\n               ad: openArray[uint8] = []): seq[uint8]		191
+nim	aeadStreamInitX	e2ee/aead.html#aeadStreamInitX,Key32,array[,uint8]	proc aeadStreamInitX(key: Key32; nonce: array[24, uint8]): AeadStream		210
+nim	aeadStreamInitDjb	e2ee/aead.html#aeadStreamInitDjb,Key32,array[,uint8]	proc aeadStreamInitDjb(key: Key32; nonce: array[8, uint8]): AeadStream		219
+nim	aeadStreamInitIetf	e2ee/aead.html#aeadStreamInitIetf,Key32,array[,uint8]	proc aeadStreamInitIetf(key: Key32; nonce: array[12, uint8]): AeadStream		228
+nimgrp	encrypt	e2ee/aead.html#encrypt-procs-all	proc		24

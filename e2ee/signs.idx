@@ -1,0 +1,21 @@
+nimTitle	signs	e2ee/signs.html	module e2ee/signs		0
+nim	Seed32	e2ee/signs.html#Seed32	type Seed32		15
+nim	PublicKey	e2ee/signs.html#PublicKey	type PublicKey		16
+nim	SecretKey	e2ee/signs.html#SecretKey	type SecretKey		17
+nim	Signature	e2ee/signs.html#Signature	type Signature		18
+nim	SigningKeyPair	e2ee/signs.html#SigningKeyPair	object SigningKeyPair		20
+nim	generateSigningKeyPair	e2ee/signs.html#generateSigningKeyPair,Seed32	proc generateSigningKeyPair(seed: Seed32): SigningKeyPair		28
+nim	generateSigningKeyPair	e2ee/signs.html#generateSigningKeyPair	proc generateSigningKeyPair(): SigningKeyPair		40
+nim	sign	e2ee/signs.html#sign,SecretKey,openArray[uint8]	proc sign(secretKey: SecretKey; message: openArray[uint8]): Signature		44
+nim	sign	e2ee/signs.html#sign,SecretKey,string	proc sign(secretKey: SecretKey; message: string): Signature		53
+nim	verify	e2ee/signs.html#verify,PublicKey,openArray[uint8],Signature	proc verify(publicKey: PublicKey; message: openArray[uint8]; signature: Signature): bool		62
+nim	verify	e2ee/signs.html#verify,PublicKey,string,Signature	proc verify(publicKey: PublicKey; message: string; signature: Signature): bool		71
+nim	publicKeyToHex	e2ee/signs.html#publicKeyToHex,PublicKey	proc publicKeyToHex(k: PublicKey): string		81
+nim	secretKeyToHex	e2ee/signs.html#secretKeyToHex,SecretKey	proc secretKeyToHex(k: SecretKey): string		82
+nim	signatureToHex	e2ee/signs.html#signatureToHex,Signature	proc signatureToHex(s: Signature): string		83
+nim	publicKeyFromHex	e2ee/signs.html#publicKeyFromHex,string	proc publicKeyFromHex(s: string): PublicKey		85
+nim	secretKeyFromHex	e2ee/signs.html#secretKeyFromHex,string	proc secretKeyFromHex(s: string): SecretKey		92
+nim	signatureFromHex	e2ee/signs.html#signatureFromHex,string	proc signatureFromHex(s: string): Signature		98
+nimgrp	generatesigningkeypair	e2ee/signs.html#generateSigningKeyPair-procs-all	proc		28
+nimgrp	verify	e2ee/signs.html#verify-procs-all	proc		62
+nimgrp	sign	e2ee/signs.html#sign-procs-all	proc		44
