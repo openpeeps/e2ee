@@ -10,8 +10,8 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/">API reference</a><br>
-  <img src="https://github.com/openpeeps/pistachio/workflows/test/badge.svg" alt="Github Actions">  <img src="https://github.com/openpeeps/pistachio/workflows/docs/badge.svg" alt="Github Actions">
+  <a href="https://openpeeps.github.io/e2ee/">API reference</a><br>
+  <img src="https://github.com/openpeeps/e2ee/workflows/test/badge.svg" alt="Github Actions">  <img src="https://github.com/openpeeps/e2ee/workflows/docs/badge.svg" alt="Github Actions">
 </p>
 
 ## 😍 Key Features
@@ -29,7 +29,8 @@
 Generate a random password using a master password and a salt:
 ```nim
 import e2ee/password
-let pwd = generatePassword("masterpassword", generateSalt())
+let salt = generateSalt().toHex()
+let pwd = generatePassword("masterpassword", salt, length = 16)
 echo "Generated password: ", pwd
 ```
 
