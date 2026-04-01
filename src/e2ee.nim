@@ -19,11 +19,13 @@
 ## - XChaCha20 stream cipher encryption and decryption
 ## - Sealing and unsealing messages with random nonces
 ## - Challenge-response MACs for mutual authentication
+## - SHA-512 hashing and HMAC functions
+## - X25519 Key Exchange (Public Key Cryptography)
 
 import std/[sequtils, strutils]
 
 import ./e2ee/private/[monocypher, utils]
-import ./e2ee/[password, aead, chacha, blake2b, signs]
+import ./e2ee/[password, aead, chacha, blake2b, signs, sha512]
 
-export password, aead, chacha, blake2b, signs
+export password, aead, chacha, blake2b, signs, sha512
 export monocypher, utils

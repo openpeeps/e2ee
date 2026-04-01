@@ -151,3 +151,34 @@ proc crypto_elligator_rev*(hidden: array[32, uint8], curve: array[32, uint8], tw
 proc crypto_elligator_key_pair*(hidden: array[32, uint8], secret_key: array[32, uint8], seed: array[32, uint8])
 
 {.pop.}
+
+
+{.push cdecl, importc, header: "monocypher-ed25519.h".}
+type
+  crypto_sha512_ctx* {.importc, bycopy.} = object
+    hash*: array[8, uint64]
+    input*: array[16, uint64]
+    input_size*: array[2, uint64]
+    input_idx*: csize_t
+
+  crypto_sha512_hmac_ctx* {.importc, bycopy.} = object
+    sha*: crypto_sha512_ctx
+    key*: array[128, uint8]
+
+# SHA-512
+proc crypto_sha512*(hash: ptr uint8, message: ptr uint8, message_size: csize_t)
+proc crypto_sha512_init*(ctx: ptr crypto_sha512_ctx)
+proc crypto_sha512_update*(ctx: ptr crypto_sha512_ctx, message: ptr uint8, message_size: csize_t)
+proc crypto_sha512_final*(ctx: ptr crypto_sha512_ctx, hash: ptr uint8)
+
+# SHA-512 HMAC
+proc crypto_sha512_hmac*(hmac: ptr uint8, key: ptr uint8, key_size: csize_t, message: ptr uint8, message_size: csize_t)
+proc crypto_sha512_hmac_init*(ctx: ptr crypto_sha512_hmac_ctx, key: ptr uint8, key_size: csize_t)
+proc crypto_sha512_hmac_update*(ctx: ptr crypto_sha512_hmac_ctx, message: ptr uint8, message_size: csize_t)
+proc crypto_sha512_hmac_final*(ctx: ptr crypto_sha512_hmac_ctx, hmac: ptr uint8)
+
+# SHA-512 HKDF
+proc crypto_sha512_hkdf*(okm: ptr uint8, okm_size: csize_t, ikm: ptr uint8, ikm_size: csize_t, salt: ptr uint8, salt_size: csize_t, info: ptr uint8, info_size: csize_t)
+proc crypto_sha512_hkdf_expand*(okm: ptr uint8, okm_size: csize_t, prk: ptr uint8, prk_size: csize_t, info: ptr uint8, info_size: csize_t)
+
+{.pop.}

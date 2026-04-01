@@ -47,6 +47,10 @@ proc strPtr*(s: string): ptr uint8 {.inline.} =
   if s.len == 0: nil
   else: cast[ptr uint8](unsafeAddr s[0])
 
+proc seqPtr*(data: var seq[uint8]): ptr uint8 {.inline.} =
+  if data.len == 0: nil
+  else: data[0].addr
+
 proc randomBytes*[N: static int]: array[N, uint8] =
   ## Generate N random bytes using urandom. Returns an array of uint8.
   let bytes = urandom(N)

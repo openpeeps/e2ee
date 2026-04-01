@@ -14,6 +14,7 @@ const charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!
 const charsetLen = charset.len
 
 proc generatePassword*(master: string, salt: string, length: int): string =
+  ## Generate a deterministic password based on a master password and a salt
   var hash: array[64, uint8]
   let input = master & salt & $(now().toTime.toUnix)
   crypto_blake2b(cast[ptr uint8](addr(hash)), csize_t(hash.len), cast[ptr uint8](cstring(input)), csize_t(input.len))
