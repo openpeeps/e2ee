@@ -86,6 +86,14 @@
   r*: array[4, uint32]
   pad*: array[4, uint32]
   h*: array[5, uint32]">crypto_poly1305_ctx</a></li>
+<li><a class="reference" href="#crypto_sha512_ctx" title="crypto_sha512_ctx {.importc, bycopy.} = object
+  hash*: array[8, uint64]
+  input*: array[16, uint64]
+  input_size*: array[2, uint64]
+  input_idx*: csize_t">crypto_sha512_ctx</a></li>
+<li><a class="reference" href="#crypto_sha512_hmac_ctx" title="crypto_sha512_hmac_ctx {.importc, bycopy.} = object
+  sha*: crypto_sha512_ctx
+  key*: array[128, uint8]">crypto_sha512_hmac_ctx</a></li>
 
     </ul>
   </details>
@@ -308,6 +316,60 @@
                        message_size: csize_t)</a></li>
 
 </ul>
+<ul class="simple nested-toc-section">crypto_sha512
+  <li><a class="reference" href="#crypto_sha512%2Cptr.uint8%2Cptr.uint8%2Ccsize_t" title="crypto_sha512(hash: ptr uint8; message: ptr uint8; message_size: csize_t)">crypto_sha512(hash: ptr uint8; message: ptr uint8; message_size: csize_t)</a></li>
+
+</ul>
+<ul class="simple nested-toc-section">crypto_sha512_final
+  <li><a class="reference" href="#crypto_sha512_final%2Cptr.crypto_sha512_ctx%2Cptr.uint8" title="crypto_sha512_final(ctx: ptr crypto_sha512_ctx; hash: ptr uint8)">crypto_sha512_final(ctx: ptr crypto_sha512_ctx; hash: ptr uint8)</a></li>
+
+</ul>
+<ul class="simple nested-toc-section">crypto_sha512_hkdf
+  <li><a class="reference" href="#crypto_sha512_hkdf%2Cptr.uint8%2Ccsize_t%2Cptr.uint8%2Ccsize_t%2Cptr.uint8%2Ccsize_t%2Cptr.uint8%2Ccsize_t" title="crypto_sha512_hkdf(okm: ptr uint8; okm_size: csize_t; ikm: ptr uint8;
+                   ikm_size: csize_t; salt: ptr uint8; salt_size: csize_t;
+                   info: ptr uint8; info_size: csize_t)">crypto_sha512_hkdf(okm: ptr uint8; okm_size: csize_t; ikm: ptr uint8;
+                   ikm_size: csize_t; salt: ptr uint8; salt_size: csize_t;
+                   info: ptr uint8; info_size: csize_t)</a></li>
+
+</ul>
+<ul class="simple nested-toc-section">crypto_sha512_hkdf_expand
+  <li><a class="reference" href="#crypto_sha512_hkdf_expand%2Cptr.uint8%2Ccsize_t%2Cptr.uint8%2Ccsize_t%2Cptr.uint8%2Ccsize_t" title="crypto_sha512_hkdf_expand(okm: ptr uint8; okm_size: csize_t; prk: ptr uint8;
+                          prk_size: csize_t; info: ptr uint8; info_size: csize_t)">crypto_sha512_hkdf_expand(okm: ptr uint8; okm_size: csize_t; prk: ptr uint8;
+                          prk_size: csize_t; info: ptr uint8; info_size: csize_t)</a></li>
+
+</ul>
+<ul class="simple nested-toc-section">crypto_sha512_hmac
+  <li><a class="reference" href="#crypto_sha512_hmac%2Cptr.uint8%2Cptr.uint8%2Ccsize_t%2Cptr.uint8%2Ccsize_t" title="crypto_sha512_hmac(hmac: ptr uint8; key: ptr uint8; key_size: csize_t;
+                   message: ptr uint8; message_size: csize_t)">crypto_sha512_hmac(hmac: ptr uint8; key: ptr uint8; key_size: csize_t;
+                   message: ptr uint8; message_size: csize_t)</a></li>
+
+</ul>
+<ul class="simple nested-toc-section">crypto_sha512_hmac_final
+  <li><a class="reference" href="#crypto_sha512_hmac_final%2Cptr.crypto_sha512_hmac_ctx%2Cptr.uint8" title="crypto_sha512_hmac_final(ctx: ptr crypto_sha512_hmac_ctx; hmac: ptr uint8)">crypto_sha512_hmac_final(ctx: ptr crypto_sha512_hmac_ctx; hmac: ptr uint8)</a></li>
+
+</ul>
+<ul class="simple nested-toc-section">crypto_sha512_hmac_init
+  <li><a class="reference" href="#crypto_sha512_hmac_init%2Cptr.crypto_sha512_hmac_ctx%2Cptr.uint8%2Ccsize_t" title="crypto_sha512_hmac_init(ctx: ptr crypto_sha512_hmac_ctx; key: ptr uint8;
+                        key_size: csize_t)">crypto_sha512_hmac_init(ctx: ptr crypto_sha512_hmac_ctx; key: ptr uint8;
+                        key_size: csize_t)</a></li>
+
+</ul>
+<ul class="simple nested-toc-section">crypto_sha512_hmac_update
+  <li><a class="reference" href="#crypto_sha512_hmac_update%2Cptr.crypto_sha512_hmac_ctx%2Cptr.uint8%2Ccsize_t" title="crypto_sha512_hmac_update(ctx: ptr crypto_sha512_hmac_ctx; message: ptr uint8;
+                          message_size: csize_t)">crypto_sha512_hmac_update(ctx: ptr crypto_sha512_hmac_ctx; message: ptr uint8;
+                          message_size: csize_t)</a></li>
+
+</ul>
+<ul class="simple nested-toc-section">crypto_sha512_init
+  <li><a class="reference" href="#crypto_sha512_init%2Cptr.crypto_sha512_ctx" title="crypto_sha512_init(ctx: ptr crypto_sha512_ctx)">crypto_sha512_init(ctx: ptr crypto_sha512_ctx)</a></li>
+
+</ul>
+<ul class="simple nested-toc-section">crypto_sha512_update
+  <li><a class="reference" href="#crypto_sha512_update%2Cptr.crypto_sha512_ctx%2Cptr.uint8%2Ccsize_t" title="crypto_sha512_update(ctx: ptr crypto_sha512_ctx; message: ptr uint8;
+                     message_size: csize_t)">crypto_sha512_update(ctx: ptr crypto_sha512_ctx; message: ptr uint8;
+                     message_size: csize_t)</a></li>
+
+</ul>
 <ul class="simple nested-toc-section">crypto_verify16
   <li><a class="reference" href="#crypto_verify16%2Cptr.uint8%2Cptr.uint8" title="crypto_verify16(a: ptr uint8; b: ptr uint8): cint">crypto_verify16(a: ptr uint8; b: ptr uint8): cint</a></li>
 
@@ -438,6 +500,28 @@
   <span class="Identifier">r</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">array</span><span class="Other">[</span><span class="DecNumber">4</span><span class="Other">,</span> <span class="Identifier">uint32</span><span class="Other">]</span>
   <span class="Identifier">pad</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">array</span><span class="Other">[</span><span class="DecNumber">4</span><span class="Other">,</span> <span class="Identifier">uint32</span><span class="Other">]</span>
   <span class="Identifier">h</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">array</span><span class="Other">[</span><span class="DecNumber">5</span><span class="Other">,</span> <span class="Identifier">uint32</span><span class="Other">]</span></pre></dt>
+  <dd>
+    
+    
+    
+  </dd>
+</div>
+<div id="crypto_sha512_ctx">
+  <dt><pre><a href="monocypher.html#crypto_sha512_ctx"><span class="Identifier">crypto_sha512_ctx</span></a> {.<span class="Identifier">importc</span><span class="Other">,</span> <span class="Identifier">bycopy</span>.} <span class="Other">=</span> <span class="Keyword">object</span>
+  <span class="Identifier">hash</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">array</span><span class="Other">[</span><span class="DecNumber">8</span><span class="Other">,</span> <span class="Identifier">uint64</span><span class="Other">]</span>
+  <span class="Identifier">input</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">array</span><span class="Other">[</span><span class="DecNumber">16</span><span class="Other">,</span> <span class="Identifier">uint64</span><span class="Other">]</span>
+  <span class="Identifier">input_size</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">array</span><span class="Other">[</span><span class="DecNumber">2</span><span class="Other">,</span> <span class="Identifier">uint64</span><span class="Other">]</span>
+  <span class="Identifier">input_idx</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">csize_t</span></pre></dt>
+  <dd>
+    
+    
+    
+  </dd>
+</div>
+<div id="crypto_sha512_hmac_ctx">
+  <dt><pre><a href="monocypher.html#crypto_sha512_hmac_ctx"><span class="Identifier">crypto_sha512_hmac_ctx</span></a> {.<span class="Identifier">importc</span><span class="Other">,</span> <span class="Identifier">bycopy</span>.} <span class="Other">=</span> <span class="Keyword">object</span>
+  <span class="Identifier">sha</span><span class="Operator">*</span><span class="Other">:</span> <a href="monocypher.html#crypto_sha512_ctx"><span class="Identifier">crypto_sha512_ctx</span></a>
+  <span class="Identifier">key</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">array</span><span class="Other">[</span><span class="DecNumber">128</span><span class="Other">,</span> <span class="Identifier">uint8</span><span class="Other">]</span></pre></dt>
   <dd>
     
     
@@ -935,6 +1019,137 @@
 </div>
 
 </div>
+<div id="crypto_sha512-procs-all">
+  <div id="crypto_sha512,ptr.uint8,ptr.uint8,csize_t">
+  <dt><pre><span class="Keyword">proc</span> <a href="#crypto_sha512%2Cptr.uint8%2Cptr.uint8%2Ccsize_t"><span class="Identifier">crypto_sha512</span></a><span class="Other">(</span><span class="Identifier">hash</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">uint8</span><span class="Other">;</span> <span class="Identifier">message</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">uint8</span><span class="Other">;</span> <span class="Identifier">message_size</span><span class="Other">:</span> <span class="Identifier">csize_t</span><span class="Other">)</span> {.
+    <span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">,</span> <span class="Identifier">header</span><span class="Other">:</span> <span class="StringLit">&quot;monocypher-ed25519.h&quot;</span><span class="Other">,</span> <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
+    <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+  <dd>
+    
+    
+    
+  </dd>
+</div>
+
+</div>
+<div id="crypto_sha512_final-procs-all">
+  <div id="crypto_sha512_final,ptr.crypto_sha512_ctx,ptr.uint8">
+  <dt><pre><span class="Keyword">proc</span> <a href="#crypto_sha512_final%2Cptr.crypto_sha512_ctx%2Cptr.uint8"><span class="Identifier">crypto_sha512_final</span></a><span class="Other">(</span><span class="Identifier">ctx</span><span class="Other">:</span> <span class="Keyword">ptr</span> <a href="monocypher.html#crypto_sha512_ctx"><span class="Identifier">crypto_sha512_ctx</span></a><span class="Other">;</span> <span class="Identifier">hash</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">uint8</span><span class="Other">)</span> {.<span class="Identifier">cdecl</span><span class="Other">,</span>
+    <span class="Identifier">importc</span><span class="Other">,</span> <span class="Identifier">header</span><span class="Other">:</span> <span class="StringLit">&quot;monocypher-ed25519.h&quot;</span><span class="Other">,</span> <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+  <dd>
+    
+    
+    
+  </dd>
+</div>
+
+</div>
+<div id="crypto_sha512_hkdf-procs-all">
+  <div id="crypto_sha512_hkdf,ptr.uint8,csize_t,ptr.uint8,csize_t,ptr.uint8,csize_t,ptr.uint8,csize_t">
+  <dt><pre><span class="Keyword">proc</span> <a href="#crypto_sha512_hkdf%2Cptr.uint8%2Ccsize_t%2Cptr.uint8%2Ccsize_t%2Cptr.uint8%2Ccsize_t%2Cptr.uint8%2Ccsize_t"><span class="Identifier">crypto_sha512_hkdf</span></a><span class="Other">(</span><span class="Identifier">okm</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">uint8</span><span class="Other">;</span> <span class="Identifier">okm_size</span><span class="Other">:</span> <span class="Identifier">csize_t</span><span class="Other">;</span> <span class="Identifier">ikm</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">uint8</span><span class="Other">;</span>
+                        <span class="Identifier">ikm_size</span><span class="Other">:</span> <span class="Identifier">csize_t</span><span class="Other">;</span> <span class="Identifier">salt</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">uint8</span><span class="Other">;</span> <span class="Identifier">salt_size</span><span class="Other">:</span> <span class="Identifier">csize_t</span><span class="Other">;</span>
+                        <span class="Identifier">info</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">uint8</span><span class="Other">;</span> <span class="Identifier">info_size</span><span class="Other">:</span> <span class="Identifier">csize_t</span><span class="Other">)</span> {.<span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">,</span>
+    <span class="Identifier">header</span><span class="Other">:</span> <span class="StringLit">&quot;monocypher-ed25519.h&quot;</span><span class="Other">,</span> <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+  <dd>
+    
+    
+    
+  </dd>
+</div>
+
+</div>
+<div id="crypto_sha512_hkdf_expand-procs-all">
+  <div id="crypto_sha512_hkdf_expand,ptr.uint8,csize_t,ptr.uint8,csize_t,ptr.uint8,csize_t">
+  <dt><pre><span class="Keyword">proc</span> <a href="#crypto_sha512_hkdf_expand%2Cptr.uint8%2Ccsize_t%2Cptr.uint8%2Ccsize_t%2Cptr.uint8%2Ccsize_t"><span class="Identifier">crypto_sha512_hkdf_expand</span></a><span class="Other">(</span><span class="Identifier">okm</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">uint8</span><span class="Other">;</span> <span class="Identifier">okm_size</span><span class="Other">:</span> <span class="Identifier">csize_t</span><span class="Other">;</span>
+                               <span class="Identifier">prk</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">uint8</span><span class="Other">;</span> <span class="Identifier">prk_size</span><span class="Other">:</span> <span class="Identifier">csize_t</span><span class="Other">;</span>
+                               <span class="Identifier">info</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">uint8</span><span class="Other">;</span> <span class="Identifier">info_size</span><span class="Other">:</span> <span class="Identifier">csize_t</span><span class="Other">)</span> {.<span class="Identifier">cdecl</span><span class="Other">,</span>
+    <span class="Identifier">importc</span><span class="Other">,</span> <span class="Identifier">header</span><span class="Other">:</span> <span class="StringLit">&quot;monocypher-ed25519.h&quot;</span><span class="Other">,</span> <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+  <dd>
+    
+    
+    
+  </dd>
+</div>
+
+</div>
+<div id="crypto_sha512_hmac-procs-all">
+  <div id="crypto_sha512_hmac,ptr.uint8,ptr.uint8,csize_t,ptr.uint8,csize_t">
+  <dt><pre><span class="Keyword">proc</span> <a href="#crypto_sha512_hmac%2Cptr.uint8%2Cptr.uint8%2Ccsize_t%2Cptr.uint8%2Ccsize_t"><span class="Identifier">crypto_sha512_hmac</span></a><span class="Other">(</span><span class="Identifier">hmac</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">uint8</span><span class="Other">;</span> <span class="Identifier">key</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">uint8</span><span class="Other">;</span> <span class="Identifier">key_size</span><span class="Other">:</span> <span class="Identifier">csize_t</span><span class="Other">;</span>
+                        <span class="Identifier">message</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">uint8</span><span class="Other">;</span> <span class="Identifier">message_size</span><span class="Other">:</span> <span class="Identifier">csize_t</span><span class="Other">)</span> {.<span class="Identifier">cdecl</span><span class="Other">,</span>
+    <span class="Identifier">importc</span><span class="Other">,</span> <span class="Identifier">header</span><span class="Other">:</span> <span class="StringLit">&quot;monocypher-ed25519.h&quot;</span><span class="Other">,</span> <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+  <dd>
+    
+    
+    
+  </dd>
+</div>
+
+</div>
+<div id="crypto_sha512_hmac_final-procs-all">
+  <div id="crypto_sha512_hmac_final,ptr.crypto_sha512_hmac_ctx,ptr.uint8">
+  <dt><pre><span class="Keyword">proc</span> <a href="#crypto_sha512_hmac_final%2Cptr.crypto_sha512_hmac_ctx%2Cptr.uint8"><span class="Identifier">crypto_sha512_hmac_final</span></a><span class="Other">(</span><span class="Identifier">ctx</span><span class="Other">:</span> <span class="Keyword">ptr</span> <a href="monocypher.html#crypto_sha512_hmac_ctx"><span class="Identifier">crypto_sha512_hmac_ctx</span></a><span class="Other">;</span> <span class="Identifier">hmac</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">uint8</span><span class="Other">)</span> {.
+    <span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">,</span> <span class="Identifier">header</span><span class="Other">:</span> <span class="StringLit">&quot;monocypher-ed25519.h&quot;</span><span class="Other">,</span> <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
+    <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+  <dd>
+    
+    
+    
+  </dd>
+</div>
+
+</div>
+<div id="crypto_sha512_hmac_init-procs-all">
+  <div id="crypto_sha512_hmac_init,ptr.crypto_sha512_hmac_ctx,ptr.uint8,csize_t">
+  <dt><pre><span class="Keyword">proc</span> <a href="#crypto_sha512_hmac_init%2Cptr.crypto_sha512_hmac_ctx%2Cptr.uint8%2Ccsize_t"><span class="Identifier">crypto_sha512_hmac_init</span></a><span class="Other">(</span><span class="Identifier">ctx</span><span class="Other">:</span> <span class="Keyword">ptr</span> <a href="monocypher.html#crypto_sha512_hmac_ctx"><span class="Identifier">crypto_sha512_hmac_ctx</span></a><span class="Other">;</span> <span class="Identifier">key</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">uint8</span><span class="Other">;</span>
+                             <span class="Identifier">key_size</span><span class="Other">:</span> <span class="Identifier">csize_t</span><span class="Other">)</span> {.<span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">,</span>
+    <span class="Identifier">header</span><span class="Other">:</span> <span class="StringLit">&quot;monocypher-ed25519.h&quot;</span><span class="Other">,</span> <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+  <dd>
+    
+    
+    
+  </dd>
+</div>
+
+</div>
+<div id="crypto_sha512_hmac_update-procs-all">
+  <div id="crypto_sha512_hmac_update,ptr.crypto_sha512_hmac_ctx,ptr.uint8,csize_t">
+  <dt><pre><span class="Keyword">proc</span> <a href="#crypto_sha512_hmac_update%2Cptr.crypto_sha512_hmac_ctx%2Cptr.uint8%2Ccsize_t"><span class="Identifier">crypto_sha512_hmac_update</span></a><span class="Other">(</span><span class="Identifier">ctx</span><span class="Other">:</span> <span class="Keyword">ptr</span> <a href="monocypher.html#crypto_sha512_hmac_ctx"><span class="Identifier">crypto_sha512_hmac_ctx</span></a><span class="Other">;</span>
+                               <span class="Identifier">message</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">uint8</span><span class="Other">;</span> <span class="Identifier">message_size</span><span class="Other">:</span> <span class="Identifier">csize_t</span><span class="Other">)</span> {.
+    <span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">,</span> <span class="Identifier">header</span><span class="Other">:</span> <span class="StringLit">&quot;monocypher-ed25519.h&quot;</span><span class="Other">,</span> <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
+    <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+  <dd>
+    
+    
+    
+  </dd>
+</div>
+
+</div>
+<div id="crypto_sha512_init-procs-all">
+  <div id="crypto_sha512_init,ptr.crypto_sha512_ctx">
+  <dt><pre><span class="Keyword">proc</span> <a href="#crypto_sha512_init%2Cptr.crypto_sha512_ctx"><span class="Identifier">crypto_sha512_init</span></a><span class="Other">(</span><span class="Identifier">ctx</span><span class="Other">:</span> <span class="Keyword">ptr</span> <a href="monocypher.html#crypto_sha512_ctx"><span class="Identifier">crypto_sha512_ctx</span></a><span class="Other">)</span> {.<span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">,</span>
+    <span class="Identifier">header</span><span class="Other">:</span> <span class="StringLit">&quot;monocypher-ed25519.h&quot;</span><span class="Other">,</span> <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+  <dd>
+    
+    
+    
+  </dd>
+</div>
+
+</div>
+<div id="crypto_sha512_update-procs-all">
+  <div id="crypto_sha512_update,ptr.crypto_sha512_ctx,ptr.uint8,csize_t">
+  <dt><pre><span class="Keyword">proc</span> <a href="#crypto_sha512_update%2Cptr.crypto_sha512_ctx%2Cptr.uint8%2Ccsize_t"><span class="Identifier">crypto_sha512_update</span></a><span class="Other">(</span><span class="Identifier">ctx</span><span class="Other">:</span> <span class="Keyword">ptr</span> <a href="monocypher.html#crypto_sha512_ctx"><span class="Identifier">crypto_sha512_ctx</span></a><span class="Other">;</span> <span class="Identifier">message</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">uint8</span><span class="Other">;</span>
+                          <span class="Identifier">message_size</span><span class="Other">:</span> <span class="Identifier">csize_t</span><span class="Other">)</span> {.<span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">,</span>
+    <span class="Identifier">header</span><span class="Other">:</span> <span class="StringLit">&quot;monocypher-ed25519.h&quot;</span><span class="Other">,</span> <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+  <dd>
+    
+    
+    
+  </dd>
+</div>
+
+</div>
 <div id="crypto_verify16-procs-all">
   <div id="crypto_verify16,ptr.uint8,ptr.uint8">
   <dt><pre><span class="Keyword">proc</span> <a href="#crypto_verify16%2Cptr.uint8%2Cptr.uint8"><span class="Identifier">crypto_verify16</span></a><span class="Other">(</span><span class="Identifier">a</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">uint8</span><span class="Other">;</span> <span class="Identifier">b</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">uint8</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> {.<span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">,</span>
@@ -1067,7 +1282,7 @@
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2026-04-01 21:30:18 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2026-04-01 21:51:00 UTC</small>
       </div>
     </div>
   </div>

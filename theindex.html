@@ -25,7 +25,7 @@
   <div class="document" id="documentId">
     <div class="container">
       <h1 class="title">Index</h1>
-      Modules: <a href="index.html">e2ee</a>, <a href="e2ee/aead.html">e2ee/aead</a>, <a href="e2ee/blake2b.html">e2ee/blake2b</a>, <a href="e2ee/chacha.html">e2ee/chacha</a>, <a href="e2ee/password.html">e2ee/password</a>, <a href="e2ee/private/monocypher.html">e2ee/private/monocypher</a>, <a href="e2ee/private/utils.html">e2ee/private/utils</a>, <a href="e2ee/signs.html">e2ee/signs</a>.<br/><p /><h2>API symbols</h2>
+      Modules: <a href="index.html">e2ee</a>, <a href="e2ee/aead.html">e2ee/aead</a>, <a href="e2ee/blake2b.html">e2ee/blake2b</a>, <a href="e2ee/chacha.html">e2ee/chacha</a>, <a href="e2ee/password.html">e2ee/password</a>, <a href="e2ee/private/monocypher.html">e2ee/private/monocypher</a>, <a href="e2ee/private/utils.html">e2ee/private/utils</a>, <a href="e2ee/sha512.html">e2ee/sha512</a>, <a href="e2ee/signs.html">e2ee/signs</a>.<br/><p /><h2>API symbols</h2>
 <dl><dt><a name="aeadDjb" href="#aeadDjb"><span>aeadDjb:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
           data-doc-search-tag="aead: AeadStreamMode.aeadDjb" href="e2ee/aead.html#aeadDjb">aead: AeadStreamMode.aeadDjb</a></li>
@@ -368,6 +368,68 @@
                        message_size: csize_t)" href="e2ee/private/monocypher.html#crypto_poly1305_update%2Cptr.crypto_poly1305_ctx%2Cptr.uint8%2Ccsize_t">monocypher: proc crypto_poly1305_update(ctx: ptr crypto_poly1305_ctx; message: ptr uint8;
                        message_size: csize_t)</a></li>
           </ul></dd>
+<dt><a name="crypto_sha512" href="#crypto_sha512"><span>crypto_sha512:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="monocypher: proc crypto_sha512(hash: ptr uint8; message: ptr uint8; message_size: csize_t)" href="e2ee/private/monocypher.html#crypto_sha512%2Cptr.uint8%2Cptr.uint8%2Ccsize_t">monocypher: proc crypto_sha512(hash: ptr uint8; message: ptr uint8; message_size: csize_t)</a></li>
+          </ul></dd>
+<dt><a name="crypto_sha512_ctx" href="#crypto_sha512_ctx"><span>crypto_sha512_ctx:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="monocypher: object crypto_sha512_ctx" href="e2ee/private/monocypher.html#crypto_sha512_ctx">monocypher: object crypto_sha512_ctx</a></li>
+          </ul></dd>
+<dt><a name="crypto_sha512_final" href="#crypto_sha512_final"><span>crypto_sha512_final:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="monocypher: proc crypto_sha512_final(ctx: ptr crypto_sha512_ctx; hash: ptr uint8)" href="e2ee/private/monocypher.html#crypto_sha512_final%2Cptr.crypto_sha512_ctx%2Cptr.uint8">monocypher: proc crypto_sha512_final(ctx: ptr crypto_sha512_ctx; hash: ptr uint8)</a></li>
+          </ul></dd>
+<dt><a name="crypto_sha512_hkdf" href="#crypto_sha512_hkdf"><span>crypto_sha512_hkdf:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="monocypher: proc crypto_sha512_hkdf(okm: ptr uint8; okm_size: csize_t; ikm: ptr uint8;
+                   ikm_size: csize_t; salt: ptr uint8; salt_size: csize_t;
+                   info: ptr uint8; info_size: csize_t)" href="e2ee/private/monocypher.html#crypto_sha512_hkdf%2Cptr.uint8%2Ccsize_t%2Cptr.uint8%2Ccsize_t%2Cptr.uint8%2Ccsize_t%2Cptr.uint8%2Ccsize_t">monocypher: proc crypto_sha512_hkdf(okm: ptr uint8; okm_size: csize_t; ikm: ptr uint8;
+                   ikm_size: csize_t; salt: ptr uint8; salt_size: csize_t;
+                   info: ptr uint8; info_size: csize_t)</a></li>
+          </ul></dd>
+<dt><a name="crypto_sha512_hkdf_expand" href="#crypto_sha512_hkdf_expand"><span>crypto_sha512_hkdf_expand:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="monocypher: proc crypto_sha512_hkdf_expand(okm: ptr uint8; okm_size: csize_t; prk: ptr uint8;
+                          prk_size: csize_t; info: ptr uint8; info_size: csize_t)" href="e2ee/private/monocypher.html#crypto_sha512_hkdf_expand%2Cptr.uint8%2Ccsize_t%2Cptr.uint8%2Ccsize_t%2Cptr.uint8%2Ccsize_t">monocypher: proc crypto_sha512_hkdf_expand(okm: ptr uint8; okm_size: csize_t; prk: ptr uint8;
+                          prk_size: csize_t; info: ptr uint8; info_size: csize_t)</a></li>
+          </ul></dd>
+<dt><a name="crypto_sha512_hmac" href="#crypto_sha512_hmac"><span>crypto_sha512_hmac:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="monocypher: proc crypto_sha512_hmac(hmac: ptr uint8; key: ptr uint8; key_size: csize_t;
+                   message: ptr uint8; message_size: csize_t)" href="e2ee/private/monocypher.html#crypto_sha512_hmac%2Cptr.uint8%2Cptr.uint8%2Ccsize_t%2Cptr.uint8%2Ccsize_t">monocypher: proc crypto_sha512_hmac(hmac: ptr uint8; key: ptr uint8; key_size: csize_t;
+                   message: ptr uint8; message_size: csize_t)</a></li>
+          </ul></dd>
+<dt><a name="crypto_sha512_hmac_ctx" href="#crypto_sha512_hmac_ctx"><span>crypto_sha512_hmac_ctx:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="monocypher: object crypto_sha512_hmac_ctx" href="e2ee/private/monocypher.html#crypto_sha512_hmac_ctx">monocypher: object crypto_sha512_hmac_ctx</a></li>
+          </ul></dd>
+<dt><a name="crypto_sha512_hmac_final" href="#crypto_sha512_hmac_final"><span>crypto_sha512_hmac_final:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="monocypher: proc crypto_sha512_hmac_final(ctx: ptr crypto_sha512_hmac_ctx; hmac: ptr uint8)" href="e2ee/private/monocypher.html#crypto_sha512_hmac_final%2Cptr.crypto_sha512_hmac_ctx%2Cptr.uint8">monocypher: proc crypto_sha512_hmac_final(ctx: ptr crypto_sha512_hmac_ctx; hmac: ptr uint8)</a></li>
+          </ul></dd>
+<dt><a name="crypto_sha512_hmac_init" href="#crypto_sha512_hmac_init"><span>crypto_sha512_hmac_init:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="monocypher: proc crypto_sha512_hmac_init(ctx: ptr crypto_sha512_hmac_ctx; key: ptr uint8;
+                        key_size: csize_t)" href="e2ee/private/monocypher.html#crypto_sha512_hmac_init%2Cptr.crypto_sha512_hmac_ctx%2Cptr.uint8%2Ccsize_t">monocypher: proc crypto_sha512_hmac_init(ctx: ptr crypto_sha512_hmac_ctx; key: ptr uint8;
+                        key_size: csize_t)</a></li>
+          </ul></dd>
+<dt><a name="crypto_sha512_hmac_update" href="#crypto_sha512_hmac_update"><span>crypto_sha512_hmac_update:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="monocypher: proc crypto_sha512_hmac_update(ctx: ptr crypto_sha512_hmac_ctx; message: ptr uint8;
+                          message_size: csize_t)" href="e2ee/private/monocypher.html#crypto_sha512_hmac_update%2Cptr.crypto_sha512_hmac_ctx%2Cptr.uint8%2Ccsize_t">monocypher: proc crypto_sha512_hmac_update(ctx: ptr crypto_sha512_hmac_ctx; message: ptr uint8;
+                          message_size: csize_t)</a></li>
+          </ul></dd>
+<dt><a name="crypto_sha512_init" href="#crypto_sha512_init"><span>crypto_sha512_init:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="monocypher: proc crypto_sha512_init(ctx: ptr crypto_sha512_ctx)" href="e2ee/private/monocypher.html#crypto_sha512_init%2Cptr.crypto_sha512_ctx">monocypher: proc crypto_sha512_init(ctx: ptr crypto_sha512_ctx)</a></li>
+          </ul></dd>
+<dt><a name="crypto_sha512_update" href="#crypto_sha512_update"><span>crypto_sha512_update:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="monocypher: proc crypto_sha512_update(ctx: ptr crypto_sha512_ctx; message: ptr uint8;
+                     message_size: csize_t)" href="e2ee/private/monocypher.html#crypto_sha512_update%2Cptr.crypto_sha512_ctx%2Cptr.uint8%2Ccsize_t">monocypher: proc crypto_sha512_update(ctx: ptr crypto_sha512_ctx; message: ptr uint8;
+                     message_size: csize_t)</a></li>
+          </ul></dd>
 <dt><a name="crypto_verify16" href="#crypto_verify16"><span>crypto_verify16:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
           data-doc-search-tag="monocypher: proc crypto_verify16(a: ptr uint8; b: ptr uint8): cint" href="e2ee/private/monocypher.html#crypto_verify16%2Cptr.uint8%2Cptr.uint8">monocypher: proc crypto_verify16(a: ptr uint8; b: ptr uint8): cint</a></li>
@@ -437,10 +499,18 @@
 <dt><a name="finish" href="#finish"><span>finish:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
           data-doc-search-tag="blake2b: proc finish(state: var Blake2b): seq[byte]" href="e2ee/blake2b.html#finish%2CBlake2b">blake2b: proc finish(state: var Blake2b): seq[byte]</a></li>
+          <li><a class="reference external"
+          data-doc-search-tag="sha512: proc finish(state: var Sha512HmacState): Sha512Hmac" href="e2ee/sha512.html#finish%2CSha512HmacState">sha512: proc finish(state: var Sha512HmacState): Sha512Hmac</a></li>
+          <li><a class="reference external"
+          data-doc-search-tag="sha512: proc finish(state: var Sha512State): Sha512Digest" href="e2ee/sha512.html#finish%2CSha512State">sha512: proc finish(state: var Sha512State): Sha512Digest</a></li>
           </ul></dd>
 <dt><a name="finishHex" href="#finishHex"><span>finishHex:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
           data-doc-search-tag="blake2b: proc finishHex(state: var Blake2b): string" href="e2ee/blake2b.html#finishHex%2CBlake2b">blake2b: proc finishHex(state: var Blake2b): string</a></li>
+          <li><a class="reference external"
+          data-doc-search-tag="sha512: proc finishHex(state: var Sha512HmacState): string" href="e2ee/sha512.html#finishHex%2CSha512HmacState">sha512: proc finishHex(state: var Sha512HmacState): string</a></li>
+          <li><a class="reference external"
+          data-doc-search-tag="sha512: proc finishHex(state: var Sha512State): string" href="e2ee/sha512.html#finishHex%2CSha512State">sha512: proc finishHex(state: var Sha512State): string</a></li>
           </ul></dd>
 <dt><a name="fromHex" href="#fromHex"><span>fromHex:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
@@ -464,6 +534,22 @@
 <li><a class="reference external"
           data-doc-search-tag="password: proc hashPassword(password: string): string" href="e2ee/password.html#hashPassword%2Cstring">password: proc hashPassword(password: string): string</a></li>
           </ul></dd>
+<dt><a name="hkdfExpandSha512" href="#hkdfExpandSha512"><span>hkdfExpandSha512:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="sha512: proc hkdfExpandSha512[N: static[int]](prk, info: openArray[byte]): array[N, uint8]" href="e2ee/sha512.html#hkdfExpandSha512%2CopenArray%5Bbyte%5D%2CopenArray%5Bbyte%5D">sha512: proc hkdfExpandSha512[N: static[int]](prk, info: openArray[byte]): array[N, uint8]</a></li>
+          <li><a class="reference external"
+          data-doc-search-tag="sha512: proc hkdfExpandSha512(prk, info: openArray[byte]; okmLen: Natural): seq[uint8]" href="e2ee/sha512.html#hkdfExpandSha512%2CopenArray%5Bbyte%5D%2CopenArray%5Bbyte%5D%2CNatural">sha512: proc hkdfExpandSha512(prk, info: openArray[byte]; okmLen: Natural): seq[uint8]</a></li>
+          <li><a class="reference external"
+          data-doc-search-tag="sha512: proc hkdfExpandSha512(prk, info: string; okmLen: Natural): seq[uint8]" href="e2ee/sha512.html#hkdfExpandSha512%2Cstring%2Cstring%2CNatural">sha512: proc hkdfExpandSha512(prk, info: string; okmLen: Natural): seq[uint8]</a></li>
+          </ul></dd>
+<dt><a name="hkdfSha512" href="#hkdfSha512"><span>hkdfSha512:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="sha512: proc hkdfSha512[N: static[int]](ikm, salt, info: openArray[byte]): array[N, uint8]" href="e2ee/sha512.html#hkdfSha512%2CopenArray%5Bbyte%5D%2CopenArray%5Bbyte%5D%2CopenArray%5Bbyte%5D">sha512: proc hkdfSha512[N: static[int]](ikm, salt, info: openArray[byte]): array[N, uint8]</a></li>
+          <li><a class="reference external"
+          data-doc-search-tag="sha512: proc hkdfSha512(ikm, salt, info: openArray[byte]; okmLen: Natural): seq[uint8]" href="e2ee/sha512.html#hkdfSha512%2CopenArray%5Bbyte%5D%2CopenArray%5Bbyte%5D%2CopenArray%5Bbyte%5D%2CNatural">sha512: proc hkdfSha512(ikm, salt, info: openArray[byte]; okmLen: Natural): seq[uint8]</a></li>
+          <li><a class="reference external"
+          data-doc-search-tag="sha512: proc hkdfSha512(ikm, salt, info: string; okmLen: Natural): seq[uint8]" href="e2ee/sha512.html#hkdfSha512%2Cstring%2Cstring%2Cstring%2CNatural">sha512: proc hkdfSha512(ikm, salt, info: string; okmLen: Natural): seq[uint8]</a></li>
+          </ul></dd>
 <dt><a name="initBlake2b" href="#initBlake2b"><span>initBlake2b:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
           data-doc-search-tag="blake2b: proc initBlake2b(hashSize: int = Blake2bDefaultDigestSize): Blake2b" href="e2ee/blake2b.html#initBlake2b%2Cint">blake2b: proc initBlake2b(hashSize: int = Blake2bDefaultDigestSize): Blake2b</a></li>
@@ -473,6 +559,16 @@
           data-doc-search-tag="blake2b: proc initBlake2bKeyed(key: openArray[byte]; hashSize: int = Blake2bDefaultDigestSize): Blake2b" href="e2ee/blake2b.html#initBlake2bKeyed%2CopenArray%5Bbyte%5D%2Cint">blake2b: proc initBlake2bKeyed(key: openArray[byte]; hashSize: int = Blake2bDefaultDigestSize): Blake2b</a></li>
           <li><a class="reference external"
           data-doc-search-tag="blake2b: proc initBlake2bKeyed(key: string; hashSize: int = Blake2bDefaultDigestSize): Blake2b" href="e2ee/blake2b.html#initBlake2bKeyed%2Cstring%2Cint">blake2b: proc initBlake2bKeyed(key: string; hashSize: int = Blake2bDefaultDigestSize): Blake2b</a></li>
+          </ul></dd>
+<dt><a name="initSha512" href="#initSha512"><span>initSha512:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="sha512: proc initSha512(): Sha512State" href="e2ee/sha512.html#initSha512">sha512: proc initSha512(): Sha512State</a></li>
+          </ul></dd>
+<dt><a name="initSha512Hmac" href="#initSha512Hmac"><span>initSha512Hmac:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="sha512: proc initSha512Hmac(key: openArray[byte]): Sha512HmacState" href="e2ee/sha512.html#initSha512Hmac%2CopenArray%5Bbyte%5D">sha512: proc initSha512Hmac(key: openArray[byte]): Sha512HmacState</a></li>
+          <li><a class="reference external"
+          data-doc-search-tag="sha512: proc initSha512Hmac(key: string): Sha512HmacState" href="e2ee/sha512.html#initSha512Hmac%2Cstring">sha512: proc initSha512Hmac(key: string): Sha512HmacState</a></li>
           </ul></dd>
 <dt><a name="Key32" href="#Key32"><span>Key32:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
@@ -540,6 +636,62 @@
 <li><a class="reference external"
           data-doc-search-tag="signs: type Seed32" href="e2ee/signs.html#Seed32">signs: type Seed32</a></li>
           </ul></dd>
+<dt><a name="seqPtr" href="#seqPtr"><span>seqPtr:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="utils: proc seqPtr(data: var seq[uint8]): ptr uint8" href="e2ee/private/utils.html#seqPtr%2Cseq%5Buint8%5D">utils: proc seqPtr(data: var seq[uint8]): ptr uint8</a></li>
+          </ul></dd>
+<dt><a name="sha512" href="#sha512"><span>sha512:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="sha512: proc sha512(message: openArray[byte]): Sha512Digest" href="e2ee/sha512.html#sha512%2CopenArray%5Bbyte%5D">sha512: proc sha512(message: openArray[byte]): Sha512Digest</a></li>
+          <li><a class="reference external"
+          data-doc-search-tag="sha512: proc sha512(message: string): Sha512Digest" href="e2ee/sha512.html#sha512%2Cstring">sha512: proc sha512(message: string): Sha512Digest</a></li>
+          </ul></dd>
+<dt><a name="Sha512BlockSize" href="#Sha512BlockSize"><span>Sha512BlockSize:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="sha512: const Sha512BlockSize" href="e2ee/sha512.html#Sha512BlockSize">sha512: const Sha512BlockSize</a></li>
+          </ul></dd>
+<dt><a name="Sha512Digest" href="#Sha512Digest"><span>Sha512Digest:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="sha512: type Sha512Digest" href="e2ee/sha512.html#Sha512Digest">sha512: type Sha512Digest</a></li>
+          </ul></dd>
+<dt><a name="Sha512DigestSize" href="#Sha512DigestSize"><span>Sha512DigestSize:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="sha512: const Sha512DigestSize" href="e2ee/sha512.html#Sha512DigestSize">sha512: const Sha512DigestSize</a></li>
+          </ul></dd>
+<dt><a name="sha512Hex" href="#sha512Hex"><span>sha512Hex:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="sha512: proc sha512Hex(message: openArray[byte]): string" href="e2ee/sha512.html#sha512Hex%2CopenArray%5Bbyte%5D">sha512: proc sha512Hex(message: openArray[byte]): string</a></li>
+          <li><a class="reference external"
+          data-doc-search-tag="sha512: proc sha512Hex(message: string): string" href="e2ee/sha512.html#sha512Hex%2Cstring">sha512: proc sha512Hex(message: string): string</a></li>
+          </ul></dd>
+<dt><a name="Sha512Hmac" href="#Sha512Hmac"><span>Sha512Hmac:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="sha512: type Sha512Hmac" href="e2ee/sha512.html#Sha512Hmac">sha512: type Sha512Hmac</a></li>
+          </ul></dd>
+<dt><a name="sha512Hmac" href="#sha512Hmac"><span>sha512Hmac:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="sha512: proc sha512Hmac(key, message: openArray[byte]): Sha512Hmac" href="e2ee/sha512.html#sha512Hmac%2CopenArray%5Bbyte%5D%2CopenArray%5Bbyte%5D">sha512: proc sha512Hmac(key, message: openArray[byte]): Sha512Hmac</a></li>
+          <li><a class="reference external"
+          data-doc-search-tag="sha512: proc sha512Hmac(key, message: string): Sha512Hmac" href="e2ee/sha512.html#sha512Hmac%2Cstring%2Cstring">sha512: proc sha512Hmac(key, message: string): Sha512Hmac</a></li>
+          </ul></dd>
+<dt><a name="sha512HmacHex" href="#sha512HmacHex"><span>sha512HmacHex:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="sha512: proc sha512HmacHex(key, message: openArray[byte]): string" href="e2ee/sha512.html#sha512HmacHex%2CopenArray%5Bbyte%5D%2CopenArray%5Bbyte%5D">sha512: proc sha512HmacHex(key, message: openArray[byte]): string</a></li>
+          <li><a class="reference external"
+          data-doc-search-tag="sha512: proc sha512HmacHex(key, message: string): string" href="e2ee/sha512.html#sha512HmacHex%2Cstring%2Cstring">sha512: proc sha512HmacHex(key, message: string): string</a></li>
+          </ul></dd>
+<dt><a name="Sha512HmacState" href="#Sha512HmacState"><span>Sha512HmacState:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="sha512: object Sha512HmacState" href="e2ee/sha512.html#Sha512HmacState">sha512: object Sha512HmacState</a></li>
+          </ul></dd>
+<dt><a name="Sha512Prk" href="#Sha512Prk"><span>Sha512Prk:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="sha512: type Sha512Prk" href="e2ee/sha512.html#Sha512Prk">sha512: type Sha512Prk</a></li>
+          </ul></dd>
+<dt><a name="Sha512State" href="#Sha512State"><span>Sha512State:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="sha512: object Sha512State" href="e2ee/sha512.html#Sha512State">sha512: object Sha512State</a></li>
+          </ul></dd>
 <dt><a name="sharedSecret" href="#sharedSecret"><span>sharedSecret:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
           data-doc-search-tag="aead: proc sharedSecret(mySecret: Key32; theirPublic: Key32): Key32" href="e2ee/aead.html#sharedSecret%2CKey32%2CKey32">aead: proc sharedSecret(mySecret: Key32; theirPublic: Key32): Key32</a></li>
@@ -597,6 +749,14 @@
           data-doc-search-tag="blake2b: proc update(state: var Blake2b; chunk: openArray[byte])" href="e2ee/blake2b.html#update%2CBlake2b%2CopenArray%5Bbyte%5D">blake2b: proc update(state: var Blake2b; chunk: openArray[byte])</a></li>
           <li><a class="reference external"
           data-doc-search-tag="blake2b: proc update(state: var Blake2b; chunk: string)" href="e2ee/blake2b.html#update%2CBlake2b%2Cstring">blake2b: proc update(state: var Blake2b; chunk: string)</a></li>
+          <li><a class="reference external"
+          data-doc-search-tag="sha512: proc update(state: var Sha512HmacState; message: openArray[byte])" href="e2ee/sha512.html#update%2CSha512HmacState%2CopenArray%5Bbyte%5D">sha512: proc update(state: var Sha512HmacState; message: openArray[byte])</a></li>
+          <li><a class="reference external"
+          data-doc-search-tag="sha512: proc update(state: var Sha512HmacState; message: string)" href="e2ee/sha512.html#update%2CSha512HmacState%2Cstring">sha512: proc update(state: var Sha512HmacState; message: string)</a></li>
+          <li><a class="reference external"
+          data-doc-search-tag="sha512: proc update(state: var Sha512State; message: openArray[byte])" href="e2ee/sha512.html#update%2CSha512State%2CopenArray%5Bbyte%5D">sha512: proc update(state: var Sha512State; message: openArray[byte])</a></li>
+          <li><a class="reference external"
+          data-doc-search-tag="sha512: proc update(state: var Sha512State; message: string)" href="e2ee/sha512.html#update%2CSha512State%2Cstring">sha512: proc update(state: var Sha512State; message: string)</a></li>
           </ul></dd>
 <dt><a name="verify" href="#verify"><span>verify:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
@@ -626,7 +786,7 @@
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2026-04-01 21:30:18 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2026-04-01 21:51:00 UTC</small>
       </div>
     </div>
   </div>

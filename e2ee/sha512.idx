@@ -1,0 +1,43 @@
+nimTitle	sha512	e2ee/sha512.html	module e2ee/sha512		0
+nim	Sha512DigestSize	e2ee/sha512.html#Sha512DigestSize	const Sha512DigestSize		25
+nim	Sha512BlockSize	e2ee/sha512.html#Sha512BlockSize	const Sha512BlockSize		26
+nim	Sha512Digest	e2ee/sha512.html#Sha512Digest	type Sha512Digest		29
+nim	Sha512Hmac	e2ee/sha512.html#Sha512Hmac	type Sha512Hmac		30
+nim	Sha512Prk	e2ee/sha512.html#Sha512Prk	type Sha512Prk		31
+nim	Sha512State	e2ee/sha512.html#Sha512State	object Sha512State		33
+nim	Sha512HmacState	e2ee/sha512.html#Sha512HmacState	object Sha512HmacState		38
+nim	sha512	e2ee/sha512.html#sha512,openArray[byte]	proc sha512(message: openArray[byte]): Sha512Digest		46
+nim	sha512	e2ee/sha512.html#sha512,string	proc sha512(message: string): Sha512Digest		54
+nim	sha512Hex	e2ee/sha512.html#sha512Hex,openArray[byte]	proc sha512Hex(message: openArray[byte]): string		62
+nim	sha512Hex	e2ee/sha512.html#sha512Hex,string	proc sha512Hex(message: string): string		66
+nim	initSha512	e2ee/sha512.html#initSha512	proc initSha512(): Sha512State		73
+nim	update	e2ee/sha512.html#update,Sha512State,openArray[byte]	proc update(state: var Sha512State; message: openArray[byte])		79
+nim	update	e2ee/sha512.html#update,Sha512State,string	proc update(state: var Sha512State; message: string)		86
+nim	finish	e2ee/sha512.html#finish,Sha512State	proc finish(state: var Sha512State): Sha512Digest		93
+nim	finishHex	e2ee/sha512.html#finishHex,Sha512State	proc finishHex(state: var Sha512State): string		101
+nim	sha512Hmac	e2ee/sha512.html#sha512Hmac,openArray[byte],openArray[byte]	proc sha512Hmac(key, message: openArray[byte]): Sha512Hmac		108
+nim	sha512Hmac	e2ee/sha512.html#sha512Hmac,string,string	proc sha512Hmac(key, message: string): Sha512Hmac		119
+nim	sha512HmacHex	e2ee/sha512.html#sha512HmacHex,openArray[byte],openArray[byte]	proc sha512HmacHex(key, message: openArray[byte]): string		130
+nim	sha512HmacHex	e2ee/sha512.html#sha512HmacHex,string,string	proc sha512HmacHex(key, message: string): string		135
+nim	initSha512Hmac	e2ee/sha512.html#initSha512Hmac,openArray[byte]	proc initSha512Hmac(key: openArray[byte]): Sha512HmacState		143
+nim	initSha512Hmac	e2ee/sha512.html#initSha512Hmac,string	proc initSha512Hmac(key: string): Sha512HmacState		148
+nim	update	e2ee/sha512.html#update,Sha512HmacState,openArray[byte]	proc update(state: var Sha512HmacState; message: openArray[byte])		155
+nim	update	e2ee/sha512.html#update,Sha512HmacState,string	proc update(state: var Sha512HmacState; message: string)		162
+nim	finish	e2ee/sha512.html#finish,Sha512HmacState	proc finish(state: var Sha512HmacState): Sha512Hmac		169
+nim	finishHex	e2ee/sha512.html#finishHex,Sha512HmacState	proc finishHex(state: var Sha512HmacState): string		178
+nim	hkdfSha512	e2ee/sha512.html#hkdfSha512,openArray[byte],openArray[byte],openArray[byte],Natural	proc hkdfSha512(ikm, salt, info: openArray[byte]; okmLen: Natural): seq[uint8]		187
+nim	hkdfSha512	e2ee/sha512.html#hkdfSha512,string,string,string,Natural	proc hkdfSha512(ikm, salt, info: string; okmLen: Natural): seq[uint8]		196
+nim	hkdfExpandSha512	e2ee/sha512.html#hkdfExpandSha512,openArray[byte],openArray[byte],Natural	proc hkdfExpandSha512(prk, info: openArray[byte]; okmLen: Natural): seq[uint8]		205
+nim	hkdfExpandSha512	e2ee/sha512.html#hkdfExpandSha512,string,string,Natural	proc hkdfExpandSha512(prk, info: string; okmLen: Natural): seq[uint8]		214
+nim	hkdfSha512	e2ee/sha512.html#hkdfSha512,openArray[byte],openArray[byte],openArray[byte]	proc hkdfSha512[N: static[int]](ikm, salt, info: openArray[byte]): array[N, uint8]		223
+nim	hkdfExpandSha512	e2ee/sha512.html#hkdfExpandSha512,openArray[byte],openArray[byte]	proc hkdfExpandSha512[N: static[int]](prk, info: openArray[byte]): array[N, uint8]		232
+nimgrp	sha512	e2ee/sha512.html#sha512-procs-all	proc		46
+nimgrp	sha512hex	e2ee/sha512.html#sha512Hex-procs-all	proc		62
+nimgrp	finish	e2ee/sha512.html#finish-procs-all	proc		93
+nimgrp	initsha512hmac	e2ee/sha512.html#initSha512Hmac-procs-all	proc		143
+nimgrp	finishhex	e2ee/sha512.html#finishHex-procs-all	proc		101
+nimgrp	update	e2ee/sha512.html#update-procs-all	proc		79
+nimgrp	sha512hmac	e2ee/sha512.html#sha512Hmac-procs-all	proc		108
+nimgrp	sha512hmachex	e2ee/sha512.html#sha512HmacHex-procs-all	proc		130
+nimgrp	hkdfsha512	e2ee/sha512.html#hkdfSha512-procs-all	proc		187
+nimgrp	hkdfexpandsha512	e2ee/sha512.html#hkdfExpandSha512-procs-all	proc		205
