@@ -29,7 +29,8 @@
 Generate a random password using a master password and a salt:
 ```nim
 import e2ee/password
-let pwd = generatePassword("masterpassword", generateSalt())
+let salt = generateSalt().toHex()
+let pwd = generatePassword("masterpassword", salt, length = 16)
 echo "Generated password: ", pwd
 ```
 
