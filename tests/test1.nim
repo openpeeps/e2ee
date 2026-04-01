@@ -10,6 +10,18 @@ suite "basics":
     assert salt2.len == 16
     assert salt1 != salt2
 
+  test "generate password with master pwd and salt":
+    let salt = generateSalt().toHex()
+    let pwd = generatePassword("masterpassword", salt, length = 16)
+    assert pwd.len == 16
+    # same master password and salt should give same result
+    let pwd2 = generatePassword("masterpassword", salt, length = 16)
+    assert pwd == pwd2
+    # different salt should give different result
+    let salt2 = generateSalt().toHex()
+    let pwd3 = generatePassword("masterpassword", salt2, length = 16)
+    assert pwd != pwd3
+
   test "key pair from password":
     let password = "my-secure-password"
     let salt = generateSalt()
@@ -303,3 +315,97 @@ suite "signs (Ed25519)":
       discard secretKeyFromHex("aa")
     expect(ValueError):
       discard signatureFromHex("aa")
+
+suite "sha512 tests":
+  test "known vectors (SHA-512)":
+    check sha512Hex("").toLowerAscii ==
+      "cf83e1357eefb8bdf1542850d66d8007d620e4050b5715dc83f4a921d36ce9ce" &
+      "47d0d13c5d85f2b0ff8318d2877eec2f63b931bd47417a81a538327af927da3e"
+
+    check sha512Hex("abc").toLowerAscii ==
+      "ddaf35a193617abacc417349ae20413112e6fa4e89a97ea20a9eeee64b55d39a" &
+      "2192992a274fc1a836ba3c23a3feebbd454d4423643ce80e2a9ac94fa54ca49f"
+
+  test "string and byte input produce same SHA-512 digest":
+    let msg = "hello sha512"
+    check sha512(msg) == sha512(asBytes(msg))
+    check sha512Hex(msg) == sha512Hex(asBytes(msg))
+
+  test "streaming SHA-512 equals one-shot":
+    let msg = "The quick brown fox jumps over the lazy dog"
+    let expected = sha512(msg)
+
+    var st = initSha512()
+    st.update("The quick brown ")
+    st.update("fox jumps over ")
+    st.update("the lazy dog")
+    let got = st.finish()
+
+    check got == expected
+
+  test "SHA-512 finalized-state checks":
+    var st = initSha512()
+    st.update("abc")
+    discard st.finish()
+
+    expect(ValueError):
+      discard st.finish()
+    expect(ValueError):
+      st.update("more")
+
+  test "known vector (HMAC-SHA512)":
+    let key = "key"
+    let msg = "The quick brown fox jumps over the lazy dog"
+    check sha512HmacHex(key, msg).toLowerAscii ==
+      "b42af09057bac1e2d41708e48a902e09b5ff7f12ab428a4fe86653c73dd248fb" &
+      "82f948a549f7b791a5b41915ee4d1ec3935357e4e2317250d0372afa2ebeeb3a"
+
+  test "string and byte input produce same HMAC":
+    let key = "super-secret"
+    let msg = "payload"
+    check sha512Hmac(key, msg) == sha512Hmac(asBytes(key), asBytes(msg))
+    check sha512HmacHex(key, msg) == sha512HmacHex(asBytes(key), asBytes(msg))
+
+  test "streaming HMAC equals one-shot":
+    let key = "my-hmac-key"
+    let expected = sha512Hmac(key, "chunked message input")
+
+    var st = initSha512Hmac(key)
+    st.update("chunked ")
+    st.update("message ")
+    st.update("input")
+    let got = st.finish()
+
+    check got == expected
+
+  test "HMAC finalized-state checks":
+    var st = initSha512Hmac("k")
+    st.update("abc")
+    discard st.finish()
+
+    expect(ValueError):
+      discard st.finish()
+    expect(ValueError):
+      st.update("more")
+
+  test "HKDF length and determinism":
+    let okm1 = hkdfSha512("ikm", "salt", "info", 48)
+    let okm2 = hkdfSha512("ikm", "salt", "info", 48)
+    let okm3 = hkdfSha512("ikm", "saltX", "info", 48)
+
+    check okm1.len == 48
+    check okm1 == okm2
+    check okm1 != okm3
+
+  test "HKDF fixed-size overload matches dynamic overload":
+    let dyn = hkdfSha512("ikm", "salt", "info", 32)
+    let fixed = hkdfSha512[32](asBytes("ikm"), asBytes("salt"), asBytes("info"))
+
+    check dyn == @fixed
+
+  test "HKDF-Expand fixed-size overload matches dynamic overload":
+    let prk = sha512Hmac("salt", "ikm")
+    let dyn = hkdfExpandSha512(@prk, asBytes("ctx"), 32)
+    let fixed = hkdfExpandSha512[32](@prk, asBytes("ctx"))
+
+    check dyn == @fixed
