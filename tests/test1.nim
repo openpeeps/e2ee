@@ -206,3 +206,100 @@ suite "blake2b tests":
       discard st.finish()
     expect(ValueError):
       st.update("more")
+
+
+suite "signs (Ed25519)":
+  let seedA: Seed32 = [
+    1'u8, 2, 3, 4, 5, 6, 7, 8,
+    9, 10, 11, 12, 13, 14, 15, 16,
+    17, 18, 19, 20, 21, 22, 23, 24,
+    25, 26, 27, 28, 29, 30, 31, 32
+  ]
+
+  let seedB: Seed32 = [
+    32'u8, 31, 30, 29, 28, 27, 26, 25,
+    24, 23, 22, 21, 20, 19, 18, 17,
+    16, 15, 14, 13, 12, 11, 10, 9,
+    8, 7, 6, 5, 4, 3, 2, 1
+  ]
+
+  test "generate deterministic keypair from seed":
+    let kp1 = generateSigningKeyPair(seedA)
+    let kp2 = generateSigningKeyPair(seedA)
+
+    check kp1.publicKey == kp2.publicKey
+    check kp1.secretKey == kp2.secretKey
+    check kp1.publicKey.len == 32
+    check kp1.secretKey.len == 64
+
+  test "different seeds produce different keypairs":
+    let a = generateSigningKeyPair(seedA)
+    let b = generateSigningKeyPair(seedB)
+
+    check a.publicKey != b.publicKey
+    check a.secretKey != b.secretKey
+
+  test "sign and verify string":
+    let kp = generateSigningKeyPair(seedA)
+    let msg = "hello signed world"
+    let sig = sign(kp.secretKey, msg)
+
+    check sig.len == 64
+    check verify(kp.publicKey, msg, sig)
+
+  test "sign and verify bytes":
+    let kp = generateSigningKeyPair(seedA)
+    let msg = asBytes("bytes payload")
+    let sig = sign(kp.secretKey, msg)
+
+    check verify(kp.publicKey, msg, sig)
+
+  test "verification fails for modified message":
+    let kp = generateSigningKeyPair(seedA)
+    let sig = sign(kp.secretKey, "original message")
+
+    check not verify(kp.publicKey, "tampered message", sig)
+
+  test "verification fails with wrong public key":
+    let alice = generateSigningKeyPair(seedA)
+    let bob = generateSigningKeyPair(seedB)
+    let msg = "message from alice"
+    let sig = sign(alice.secretKey, msg)
+
+    check not verify(bob.publicKey, msg, sig)
+
+  test "verification fails for modified signature":
+    let kp = generateSigningKeyPair(seedA)
+    let msg = "integrity check"
+    var sig = sign(kp.secretKey, msg)
+
+    sig[0] = sig[0] xor 0x01'u8
+    check not verify(kp.publicKey, msg, sig)
+
+  test "empty message can be signed and verified":
+    let kp = generateSigningKeyPair(seedA)
+    let sig = sign(kp.secretKey, "")
+
+    check verify(kp.publicKey, "", sig)
+
+  test "hex roundtrip for public/secret/signature":
+    let kp = generateSigningKeyPair(seedA)
+    let msg = "roundtrip"
+    let sig = sign(kp.secretKey, msg)
+
+    let pkHex = publicKeyToHex(kp.publicKey)
+    let skHex = secretKeyToHex(kp.secretKey)
+    let sigHex = signatureToHex(sig)
+
+    check publicKeyFromHex(pkHex) == kp.publicKey
+    check secretKeyFromHex(skHex) == kp.secretKey
+    check signatureFromHex(sigHex) == sig
+    check verify(publicKeyFromHex(pkHex), msg, signatureFromHex(sigHex))
+
+  test "hex decode rejects invalid lengths":
+    expect(ValueError):
+      discard publicKeyFromHex("aa")
+    expect(ValueError):
+      discard secretKeyFromHex("aa")
+    expect(ValueError):
+      discard signatureFromHex("aa")
