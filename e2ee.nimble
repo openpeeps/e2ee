@@ -2,7 +2,7 @@
 
 version       = "0.1.0"
 author        = "George Lemon"
-description   = "Monocypher-based end-to-end encryption library for Nim"
+description   = "Monocypher E2EE, Hashing, Password Hashing, Sealing and Key Exchange"
 license       = "MIT"
 srcDir        = "src"
 
