@@ -27,7 +27,7 @@
 
 ## Password generation, hashing and verification
 Generate a random password using a master password and a salt:
-```
+```nim
 import e2ee/password
 let pwd = generatePassword("masterpassword", generateSalt())
 echo "Generated password: ", pwd
