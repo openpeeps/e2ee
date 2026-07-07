@@ -16,13 +16,16 @@
 <link rel="icon" type="image/png" sizes="32x32" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAA3XAAAN1wFCKJt4AAAAB3RJTUUH4QQQEwksSS9ZWwAAAk1JREFUWMPtll2ITVEUx39nn/O7Y5qR8f05wtCUUr6ZIS++8pEnkZInPImneaCQ5METNdOkeFBKUhMPRIkHKfEuUZSUlGlKPN2TrgfncpvmnntnmlEyq1Z7t89/rf9a6+y99oZxGZf/XeIq61EdtgKXgdXA0xrYAvBjOIF1AI9zvjcC74BSpndrJPkBWDScTF8Aa4E3wDlgHbASaANmVqlcCnwHvgDvgVfAJ+AikAAvgfVZwLnSVZHZaOuKoQi3ZOMi4NkYkpe1p4J7A8BpYAD49hfIy/oqG0+hLomiKP2L5L+1ubn5115S+3OAn4EnwBlgMzCjyt6ZAnQCJ4A7wOs88iRJHvw50HoujuPBoCKwHWiosy8MdfZnAdcHk8dxXFJ3VQbQlCTJvRBCGdRbD4M6uc5glpY3eAihpN5S5w12diSEcCCEcKUO4ljdr15T76ur1FDDLIQQ3qv71EdDOe3Kxj3leRXyk+pxdWnFWod6Wt2bY3de3aSuUHcPBVimHs7mK9WrmeOF6lR1o9qnzskh2ar2qm1qizpfXaPeVGdlmGN5pb09qMxz1Xb1kLqgzn1RyH7JUXW52lr5e/Kqi9qpto7V1atuUzfnARrV7jEib1T76gG2qxdGmXyiekkt1GswPTtek0aBfJp6YySGBfWg2tPQ0FAYgf1stUfdmdcjarbYJEniKIq6gY/Aw+zWHAC+p2labGpqiorFYgGYCEzN7oQdQClN07O1/EfDyGgC0ALMBdYAi4FyK+4H3gLPsxfR1zRNi+NP7nH5J+QntnXe5B5mpfQAAAAASUVORK5CYII=">
 
 <!-- CSS -->
-<link rel="stylesheet" type="text/css" href="../../nimdoc.out.css?v=2.2.8">
+<link rel="stylesheet" type="text/css" href="../../nimdoc.out.css?v=2.2.10">
 
 <!-- JS -->
-<script type="text/javascript" src="../../dochack.js?v=2.2.8"></script>
+<script type="text/javascript" src="../../dochack.js?v=2.2.10"></script>
 </head>
 <body>
   <div class="document" id="documentId">
+    <input type="checkbox" id="nav-toggle" hidden>
+    <label for="nav-toggle" id="nav-burger">&#9776;</label>
+    <label for="nav-toggle" id="nav-overlay"></label>
     <div class="container">
       <h1 class="title">e2ee/private/utils</h1>
       <div class="row">
@@ -121,7 +124,7 @@
   <h1><a class="toc-backref" href="#7">Types</a></h1>
   <dl class="item">
     <div id="Key32">
-  <dt><pre><a href="utils.html#Key32"><span class="Identifier">Key32</span></a> <span class="Other">=</span> <span class="Identifier">array</span><span class="Other">[</span><span class="DecNumber">32</span><span class="Other">,</span> <span class="Identifier">uint8</span><span class="Other">]</span></pre></dt>
+  <dt><pre><a href="#Key32"><span class="Identifier">Key32</span></a> <span class="Other">=</span> <span class="Identifier">array</span><span class="Other">[</span><span class="DecNumber">32</span><span class="Other">,</span> <span class="Identifier">uint8</span><span class="Other">]</span></pre></dt>
   <dd>
     
     
@@ -129,7 +132,7 @@
   </dd>
 </div>
 <div id="Mac16">
-  <dt><pre><a href="utils.html#Mac16"><span class="Identifier">Mac16</span></a> <span class="Other">=</span> <a href="utils.html#RandomBytes"><span class="Identifier">RandomBytes</span></a></pre></dt>
+  <dt><pre><a href="#Mac16"><span class="Identifier">Mac16</span></a> <span class="Other">=</span> <a href="#RandomBytes"><span class="Identifier">RandomBytes</span></a></pre></dt>
   <dd>
     
     
@@ -137,7 +140,7 @@
   </dd>
 </div>
 <div id="Nonce24">
-  <dt><pre><a href="utils.html#Nonce24"><span class="Identifier">Nonce24</span></a> <span class="Other">=</span> <span class="Identifier">array</span><span class="Other">[</span><span class="DecNumber">24</span><span class="Other">,</span> <span class="Identifier">uint8</span><span class="Other">]</span></pre></dt>
+  <dt><pre><a href="#Nonce24"><span class="Identifier">Nonce24</span></a> <span class="Other">=</span> <span class="Identifier">array</span><span class="Other">[</span><span class="DecNumber">24</span><span class="Other">,</span> <span class="Identifier">uint8</span><span class="Other">]</span></pre></dt>
   <dd>
     
     
@@ -145,7 +148,7 @@
   </dd>
 </div>
 <div id="RandomBytes">
-  <dt><pre><a href="utils.html#RandomBytes"><span class="Identifier">RandomBytes</span></a> <span class="Other">=</span> <span class="Identifier">array</span><span class="Other">[</span><span class="DecNumber">16</span><span class="Other">,</span> <span class="Identifier">uint8</span><span class="Other">]</span></pre></dt>
+  <dt><pre><a href="#RandomBytes"><span class="Identifier">RandomBytes</span></a> <span class="Other">=</span> <span class="Identifier">array</span><span class="Other">[</span><span class="DecNumber">16</span><span class="Other">,</span> <span class="Identifier">uint8</span><span class="Other">]</span></pre></dt>
   <dd>
     
     
@@ -160,7 +163,7 @@
   <dl class="item">
     <div id="fromHex-procs-all">
   <div id="fromHex,string">
-  <dt><pre><span class="Keyword">proc</span> <a href="#fromHex%2Cstring"><span class="Identifier">fromHex</span></a><span class="Other">[</span><span class="Identifier">N</span><span class="Other">:</span> <span class="Identifier">static</span> <span class="Identifier">int</span><span class="Other">;</span> <span class="Identifier">T</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">s</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">array</span><span class="Other">[</span><span class="Identifier">N</span><span class="Other">,</span> <span class="Identifier">T</span><span class="Other">]</span></pre></dt>
+  <dt><pre><span class="Keyword">proc</span> <a href="#fromHex%2Cstring"><span class="Identifier">fromHex</span></a><span class="Other">[</span><span class="Identifier">N</span><span class="Other">:</span> <span class="Keyword">static</span> <span class="Identifier">int</span><span class="Other">;</span> <span class="Identifier">T</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">s</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">array</span><span class="Other">[</span><span class="Identifier">N</span><span class="Other">,</span> <span class="Identifier">T</span><span class="Other">]</span></pre></dt>
   <dd>
     
     Convert a hex string back to an array of bytes of type T.
@@ -171,7 +174,7 @@
 </div>
 <div id="generateSalt-procs-all">
   <div id="generateSalt,staticint">
-  <dt><pre><span class="Keyword">proc</span> <a href="#generateSalt%2Cstaticint"><span class="Identifier">generateSalt</span></a><span class="Other">(</span><span class="Identifier">len</span><span class="Other">:</span> <span class="Identifier">static</span> <span class="Identifier">int</span> <span class="Other">=</span> <span class="DecNumber">16</span><span class="Other">)</span><span class="Other">:</span> <a href="utils.html#RandomBytes"><span class="Identifier">RandomBytes</span></a></pre></dt>
+  <dt><pre><span class="Keyword">proc</span> <a href="#generateSalt%2Cstaticint"><span class="Identifier">generateSalt</span></a><span class="Other">(</span><span class="Identifier">len</span><span class="Other">:</span> <span class="Keyword">static</span> <span class="Identifier">int</span> <span class="Other">=</span> <span class="DecNumber">16</span><span class="Other">)</span><span class="Other">:</span> <a href="#RandomBytes"><span class="Identifier">RandomBytes</span></a></pre></dt>
   <dd>
     
     Generate a random salt of the given length (default 16 bytes).
@@ -182,7 +185,7 @@
 </div>
 <div id="randomBytes-procs-all">
   <div id="randomBytes_2">
-  <dt><pre><span class="Keyword">proc</span> <a href="#randomBytes_2"><span class="Identifier">randomBytes</span></a><span class="Other">[</span><span class="Identifier">N</span><span class="Other">:</span> <span class="Identifier">static</span> <span class="Identifier">int</span><span class="Other">]</span><span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">array</span><span class="Other">[</span><span class="Identifier">N</span><span class="Other">,</span> <span class="Identifier">uint8</span><span class="Other">]</span></pre></dt>
+  <dt><pre><span class="Keyword">proc</span> <a href="#randomBytes_2"><span class="Identifier">randomBytes</span></a><span class="Other">[</span><span class="Identifier">N</span><span class="Other">:</span> <span class="Keyword">static</span> <span class="Identifier">int</span><span class="Other">]</span><span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">array</span><span class="Other">[</span><span class="Identifier">N</span><span class="Other">,</span> <span class="Identifier">uint8</span><span class="Other">]</span></pre></dt>
   <dd>
     
     Generate N random bytes using urandom. Returns an array of uint8.
@@ -247,7 +250,7 @@
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2026-04-01 22:05:58 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2026-07-07 18:01:47 UTC</small>
       </div>
     </div>
   </div>

@@ -16,13 +16,16 @@
 <link rel="icon" type="image/png" sizes="32x32" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAA3XAAAN1wFCKJt4AAAAB3RJTUUH4QQQEwksSS9ZWwAAAk1JREFUWMPtll2ITVEUx39nn/O7Y5qR8f05wtCUUr6ZIS++8pEnkZInPImneaCQ5METNdOkeFBKUhMPRIkHKfEuUZSUlGlKPN2TrgfncpvmnntnmlEyq1Z7t89/rf9a6+y99oZxGZf/XeIq61EdtgKXgdXA0xrYAvBjOIF1AI9zvjcC74BSpndrJPkBWDScTF8Aa4E3wDlgHbASaANmVqlcCnwHvgDvgVfAJ+AikAAvgfVZwLnSVZHZaOuKoQi3ZOMi4NkYkpe1p4J7A8BpYAD49hfIy/oqG0+hLomiKP2L5L+1ubn5115S+3OAn4EnwBlgMzCjyt6ZAnQCJ4A7wOs88iRJHvw50HoujuPBoCKwHWiosy8MdfZnAdcHk8dxXFJ3VQbQlCTJvRBCGdRbD4M6uc5glpY3eAihpN5S5w12diSEcCCEcKUO4ljdr15T76ur1FDDLIQQ3qv71EdDOe3Kxj3leRXyk+pxdWnFWod6Wt2bY3de3aSuUHcPBVimHs7mK9WrmeOF6lR1o9qnzskh2ar2qm1qizpfXaPeVGdlmGN5pb09qMxz1Xb1kLqgzn1RyH7JUXW52lr5e/Kqi9qpto7V1atuUzfnARrV7jEib1T76gG2qxdGmXyiekkt1GswPTtek0aBfJp6YySGBfWg2tPQ0FAYgf1stUfdmdcjarbYJEniKIq6gY/Aw+zWHAC+p2labGpqiorFYgGYCEzN7oQdQClN07O1/EfDyGgC0ALMBdYAi4FyK+4H3gLPsxfR1zRNi+NP7nH5J+QntnXe5B5mpfQAAAAASUVORK5CYII=">
 
 <!-- CSS -->
-<link rel="stylesheet" type="text/css" href="../nimdoc.out.css?v=2.2.8">
+<link rel="stylesheet" type="text/css" href="../nimdoc.out.css?v=2.2.10">
 
 <!-- JS -->
-<script type="text/javascript" src="../dochack.js?v=2.2.8"></script>
+<script type="text/javascript" src="../dochack.js?v=2.2.10"></script>
 </head>
 <body>
   <div class="document" id="documentId">
+    <input type="checkbox" id="nav-toggle" hidden>
+    <label for="nav-toggle" id="nav-burger">&#9776;</label>
+    <label for="nav-toggle" id="nav-overlay"></label>
     <div class="container">
       <h1 class="title">e2ee/aead</h1>
       <div class="row">
@@ -165,7 +168,7 @@
   <h1><a class="toc-backref" href="#7">Types</a></h1>
   <dl class="item">
     <div id="AeadStream">
-  <dt><pre><a href="aead.html#AeadStream"><span class="Identifier">AeadStream</span></a> <span class="Other">=</span> <span class="Keyword">object</span></pre></dt>
+  <dt><pre><a href="#AeadStream"><span class="Identifier">AeadStream</span></a> <span class="Other">=</span> <span class="Keyword">object</span></pre></dt>
   <dd>
     
     The AeadStream type represents an AEAD streaming encryption context for
@@ -173,7 +176,7 @@
   </dd>
 </div>
 <div id="AeadStreamMode">
-  <dt><pre><a href="aead.html#AeadStreamMode"><span class="Identifier">AeadStreamMode</span></a> <span class="Other">=</span> <span class="Keyword">enum</span>
+  <dt><pre><a href="#AeadStreamMode"><span class="Identifier">AeadStreamMode</span></a> <span class="Other">=</span> <span class="Keyword">enum</span>
   <span class="Identifier">aeadX</span><span class="Other">,</span> <span class="Identifier">aeadDjb</span><span class="Other">,</span> <span class="Identifier">aeadIetf</span></pre></dt>
   <dd>
     
@@ -182,7 +185,7 @@
   </dd>
 </div>
 <div id="SealedMessage">
-  <dt><pre><a href="aead.html#SealedMessage"><span class="Identifier">SealedMessage</span></a> <span class="Other">=</span> <span class="Keyword">object</span>
+  <dt><pre><a href="#SealedMessage"><span class="Identifier">SealedMessage</span></a> <span class="Other">=</span> <span class="Keyword">object</span>
   <span class="Identifier">nonce</span><span class="Operator">*</span><span class="Other">:</span> <a href="private/utils.html#Nonce24"><span class="Identifier">Nonce24</span></a>
   <span class="Identifier">mac</span><span class="Operator">*</span><span class="Other">:</span> <a href="private/utils.html#Mac16"><span class="Identifier">Mac16</span></a>
   <span class="Identifier">cipherText</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><span class="Identifier">uint8</span><span class="Other">]</span></pre></dt>
@@ -200,7 +203,7 @@
   <dl class="item">
     <div id="aeadStreamInit-procs-all">
   <div id="aeadStreamInit,AeadStreamMode,Key32,openArray[uint8]">
-  <dt><pre><span class="Keyword">proc</span> <a href="#aeadStreamInit%2CAeadStreamMode%2CKey32%2CopenArray%5Buint8%5D"><span class="Identifier">aeadStreamInit</span></a><span class="Other">(</span><span class="Identifier">mode</span><span class="Other">:</span> <a href="aead.html#AeadStreamMode"><span class="Identifier">AeadStreamMode</span></a><span class="Other">;</span> <span class="Identifier">key</span><span class="Other">:</span> <a href="private/utils.html#Key32"><span class="Identifier">Key32</span></a><span class="Other">;</span> <span class="Identifier">nonce</span><span class="Other">:</span> <span class="Identifier">openArray</span><span class="Other">[</span><span class="Identifier">uint8</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <a href="aead.html#AeadStream"><span class="Identifier">AeadStream</span></a> {.
+  <dt><pre><span class="Keyword">proc</span> <a href="#aeadStreamInit%2CAeadStreamMode%2CKey32%2CopenArray%5Buint8%5D"><span class="Identifier">aeadStreamInit</span></a><span class="Other">(</span><span class="Identifier">mode</span><span class="Other">:</span> <a href="#AeadStreamMode"><span class="Identifier">AeadStreamMode</span></a><span class="Other">;</span> <span class="Identifier">key</span><span class="Other">:</span> <a href="private/utils.html#Key32"><span class="Identifier">Key32</span></a><span class="Other">;</span> <span class="Identifier">nonce</span><span class="Other">:</span> <span class="Identifier">openArray</span><span class="Other">[</span><span class="Identifier">uint8</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <a href="#AeadStream"><span class="Identifier">AeadStream</span></a> {.
     <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
   <dd>
     
@@ -212,7 +215,7 @@
 </div>
 <div id="aeadStreamInitDjb-procs-all">
   <div id="aeadStreamInitDjb,Key32,array[,uint8]">
-  <dt><pre><span class="Keyword">proc</span> <a href="#aeadStreamInitDjb%2CKey32%2Carray%5B%2Cuint8%5D"><span class="Identifier">aeadStreamInitDjb</span></a><span class="Other">(</span><span class="Identifier">key</span><span class="Other">:</span> <a href="private/utils.html#Key32"><span class="Identifier">Key32</span></a><span class="Other">;</span> <span class="Identifier">nonce</span><span class="Other">:</span> <span class="Identifier">array</span><span class="Other">[</span><span class="DecNumber">8</span><span class="Other">,</span> <span class="Identifier">uint8</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <a href="aead.html#AeadStream"><span class="Identifier">AeadStream</span></a> {.
+  <dt><pre><span class="Keyword">proc</span> <a href="#aeadStreamInitDjb%2CKey32%2Carray%5B%2Cuint8%5D"><span class="Identifier">aeadStreamInitDjb</span></a><span class="Other">(</span><span class="Identifier">key</span><span class="Other">:</span> <a href="private/utils.html#Key32"><span class="Identifier">Key32</span></a><span class="Other">;</span> <span class="Identifier">nonce</span><span class="Other">:</span> <span class="Identifier">array</span><span class="Other">[</span><span class="DecNumber">8</span><span class="Other">,</span> <span class="Identifier">uint8</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <a href="#AeadStream"><span class="Identifier">AeadStream</span></a> {.
     <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
   <dd>
     
@@ -224,7 +227,7 @@
 </div>
 <div id="aeadStreamInitIetf-procs-all">
   <div id="aeadStreamInitIetf,Key32,array[,uint8]">
-  <dt><pre><span class="Keyword">proc</span> <a href="#aeadStreamInitIetf%2CKey32%2Carray%5B%2Cuint8%5D"><span class="Identifier">aeadStreamInitIetf</span></a><span class="Other">(</span><span class="Identifier">key</span><span class="Other">:</span> <a href="private/utils.html#Key32"><span class="Identifier">Key32</span></a><span class="Other">;</span> <span class="Identifier">nonce</span><span class="Other">:</span> <span class="Identifier">array</span><span class="Other">[</span><span class="DecNumber">12</span><span class="Other">,</span> <span class="Identifier">uint8</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <a href="aead.html#AeadStream"><span class="Identifier">AeadStream</span></a> {.
+  <dt><pre><span class="Keyword">proc</span> <a href="#aeadStreamInitIetf%2CKey32%2Carray%5B%2Cuint8%5D"><span class="Identifier">aeadStreamInitIetf</span></a><span class="Other">(</span><span class="Identifier">key</span><span class="Other">:</span> <a href="private/utils.html#Key32"><span class="Identifier">Key32</span></a><span class="Other">;</span> <span class="Identifier">nonce</span><span class="Other">:</span> <span class="Identifier">array</span><span class="Other">[</span><span class="DecNumber">12</span><span class="Other">,</span> <span class="Identifier">uint8</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <a href="#AeadStream"><span class="Identifier">AeadStream</span></a> {.
     <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
   <dd>
     
@@ -236,7 +239,7 @@
 </div>
 <div id="aeadStreamInitX-procs-all">
   <div id="aeadStreamInitX,Key32,array[,uint8]">
-  <dt><pre><span class="Keyword">proc</span> <a href="#aeadStreamInitX%2CKey32%2Carray%5B%2Cuint8%5D"><span class="Identifier">aeadStreamInitX</span></a><span class="Other">(</span><span class="Identifier">key</span><span class="Other">:</span> <a href="private/utils.html#Key32"><span class="Identifier">Key32</span></a><span class="Other">;</span> <span class="Identifier">nonce</span><span class="Other">:</span> <span class="Identifier">array</span><span class="Other">[</span><span class="DecNumber">24</span><span class="Other">,</span> <span class="Identifier">uint8</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <a href="aead.html#AeadStream"><span class="Identifier">AeadStream</span></a> {.
+  <dt><pre><span class="Keyword">proc</span> <a href="#aeadStreamInitX%2CKey32%2Carray%5B%2Cuint8%5D"><span class="Identifier">aeadStreamInitX</span></a><span class="Other">(</span><span class="Identifier">key</span><span class="Other">:</span> <a href="private/utils.html#Key32"><span class="Identifier">Key32</span></a><span class="Other">;</span> <span class="Identifier">nonce</span><span class="Other">:</span> <span class="Identifier">array</span><span class="Other">[</span><span class="DecNumber">24</span><span class="Other">,</span> <span class="Identifier">uint8</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <a href="#AeadStream"><span class="Identifier">AeadStream</span></a> {.
     <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
   <dd>
     
@@ -248,7 +251,7 @@
 </div>
 <div id="aeadStreamRead-procs-all">
   <div id="aeadStreamRead,AeadStream,openArray[uint8],Mac16,openArray[uint8]">
-  <dt><pre><span class="Keyword">proc</span> <a href="#aeadStreamRead%2CAeadStream%2CopenArray%5Buint8%5D%2CMac16%2CopenArray%5Buint8%5D"><span class="Identifier">aeadStreamRead</span></a><span class="Other">(</span><span class="Identifier">stream</span><span class="Other">:</span> <span class="Keyword">var</span> <a href="aead.html#AeadStream"><span class="Identifier">AeadStream</span></a><span class="Other">;</span> <span class="Identifier">cipherText</span><span class="Other">:</span> <span class="Identifier">openArray</span><span class="Other">[</span><span class="Identifier">uint8</span><span class="Other">]</span><span class="Other">;</span>
+  <dt><pre><span class="Keyword">proc</span> <a href="#aeadStreamRead%2CAeadStream%2CopenArray%5Buint8%5D%2CMac16%2CopenArray%5Buint8%5D"><span class="Identifier">aeadStreamRead</span></a><span class="Other">(</span><span class="Identifier">stream</span><span class="Other">:</span> <span class="Keyword">var</span> <a href="#AeadStream"><span class="Identifier">AeadStream</span></a><span class="Other">;</span> <span class="Identifier">cipherText</span><span class="Other">:</span> <span class="Identifier">openArray</span><span class="Other">[</span><span class="Identifier">uint8</span><span class="Other">]</span><span class="Other">;</span>
                     <span class="Identifier">mac</span><span class="Other">:</span> <a href="private/utils.html#Mac16"><span class="Identifier">Mac16</span></a><span class="Other">;</span> <span class="Identifier">ad</span><span class="Other">:</span> <span class="Identifier">openArray</span><span class="Other">[</span><span class="Identifier">uint8</span><span class="Other">]</span> <span class="Other">=</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><span class="Identifier">uint8</span><span class="Other">]</span> {.
     <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">ValueError</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
   <dd>
@@ -261,7 +264,7 @@
 </div>
 <div id="aeadStreamWrite-procs-all">
   <div id="aeadStreamWrite,AeadStream,openArray[uint8],openArray[uint8]">
-  <dt><pre><span class="Keyword">proc</span> <a href="#aeadStreamWrite%2CAeadStream%2CopenArray%5Buint8%5D%2CopenArray%5Buint8%5D"><span class="Identifier">aeadStreamWrite</span></a><span class="Other">(</span><span class="Identifier">stream</span><span class="Other">:</span> <span class="Keyword">var</span> <a href="aead.html#AeadStream"><span class="Identifier">AeadStream</span></a><span class="Other">;</span> <span class="Identifier">plainText</span><span class="Other">:</span> <span class="Identifier">openArray</span><span class="Other">[</span><span class="Identifier">uint8</span><span class="Other">]</span><span class="Other">;</span>
+  <dt><pre><span class="Keyword">proc</span> <a href="#aeadStreamWrite%2CAeadStream%2CopenArray%5Buint8%5D%2CopenArray%5Buint8%5D"><span class="Identifier">aeadStreamWrite</span></a><span class="Other">(</span><span class="Identifier">stream</span><span class="Other">:</span> <span class="Keyword">var</span> <a href="#AeadStream"><span class="Identifier">AeadStream</span></a><span class="Other">;</span> <span class="Identifier">plainText</span><span class="Other">:</span> <span class="Identifier">openArray</span><span class="Other">[</span><span class="Identifier">uint8</span><span class="Other">]</span><span class="Other">;</span>
                      <span class="Identifier">ad</span><span class="Other">:</span> <span class="Identifier">openArray</span><span class="Other">[</span><span class="Identifier">uint8</span><span class="Other">]</span> <span class="Other">=</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Other">(</span><span class="Identifier">seq</span><span class="Other">[</span><span class="Identifier">uint8</span><span class="Other">]</span><span class="Other">,</span> <a href="private/utils.html#Mac16"><span class="Identifier">Mac16</span></a><span class="Other">)</span> {.
     <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
   <dd>
@@ -338,7 +341,7 @@
 </div>
 <div id="seal-procs-all">
   <div id="seal,string,Key32">
-  <dt><pre><span class="Keyword">proc</span> <a href="#seal%2Cstring%2CKey32"><span class="Identifier">seal</span></a><span class="Other">(</span><span class="Identifier">plainText</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">key</span><span class="Other">:</span> <a href="private/utils.html#Key32"><span class="Identifier">Key32</span></a><span class="Other">)</span><span class="Other">:</span> <a href="aead.html#SealedMessage"><span class="Identifier">SealedMessage</span></a> {.
+  <dt><pre><span class="Keyword">proc</span> <a href="#seal%2Cstring%2CKey32"><span class="Identifier">seal</span></a><span class="Other">(</span><span class="Identifier">plainText</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">key</span><span class="Other">:</span> <a href="private/utils.html#Key32"><span class="Identifier">Key32</span></a><span class="Other">)</span><span class="Other">:</span> <a href="#SealedMessage"><span class="Identifier">SealedMessage</span></a> {.
     <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">OSError</span><span class="Other">,</span> <span class="Identifier">ValueError</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
   <dd>
     
@@ -362,7 +365,7 @@
 </div>
 <div id="unseal-procs-all">
   <div id="unseal,SealedMessage,Key32">
-  <dt><pre><span class="Keyword">proc</span> <a href="#unseal%2CSealedMessage%2CKey32"><span class="Identifier">unseal</span></a><span class="Other">(</span><span class="Identifier">msg</span><span class="Other">:</span> <a href="aead.html#SealedMessage"><span class="Identifier">SealedMessage</span></a><span class="Other">;</span> <span class="Identifier">key</span><span class="Other">:</span> <a href="private/utils.html#Key32"><span class="Identifier">Key32</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">string</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">ValueError</span><span class="Other">]</span><span class="Other">,</span>
+  <dt><pre><span class="Keyword">proc</span> <a href="#unseal%2CSealedMessage%2CKey32"><span class="Identifier">unseal</span></a><span class="Other">(</span><span class="Identifier">msg</span><span class="Other">:</span> <a href="#SealedMessage"><span class="Identifier">SealedMessage</span></a><span class="Other">;</span> <span class="Identifier">key</span><span class="Other">:</span> <a href="private/utils.html#Key32"><span class="Identifier">Key32</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">string</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">ValueError</span><span class="Other">]</span><span class="Other">,</span>
     <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
   <dd>
     
@@ -406,7 +409,7 @@
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2026-04-01 22:05:58 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2026-07-07 18:01:48 UTC</small>
       </div>
     </div>
   </div>
